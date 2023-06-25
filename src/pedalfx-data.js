@@ -1,4 +1,5 @@
-const Pedals = 
+export default function Pedals() {
+    const pedals = 
     [
         {
         Id: "1",
@@ -135,4 +136,12 @@ const Pedals =
             NICE_TO_KNOW: "",
             TAGS: ["#crunch", "#fuzzy", "#distortion"],
             },
-        ]
+        ];
+
+return (
+    <ul>
+        {pedals.map((pedal) => (<li>{pedal}</li>
+        ))}
+    </ul>
+);
+}
