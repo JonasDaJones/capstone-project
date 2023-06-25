@@ -1,9 +1,11 @@
-import headerShelf from "@/components/header-shelf";
+import React from "react";
+import PedalGallery from "./components/pedal-gallery";
+
 export default function HomePage() {
   return (
     <div>
-      <h1>Hello from Next.js</h1>
-      <headerShelf />
+      <h1>My Sound Journal</h1>
+      <PedalGallery />
     </div>
   );
 }
