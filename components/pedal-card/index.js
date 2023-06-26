@@ -1,10 +1,11 @@
 import React from "react";
+import { MainCard } from "./pedal-card.styled";
 
 const PedalCardMain = ({ pedalData }) => {
   return (
-    <div>
+    <MainCard>
       <div>
-        <h2>{pedalData.NAME}</h2>
+        <h3>{pedalData.NAME}</h3>
       </div>
       <div>
         <p>{pedalData.IMAGE}</p>
@@ -13,7 +14,7 @@ const PedalCardMain = ({ pedalData }) => {
         <p>Made in: {pedalData.MADE_IN}</p>
         <p>{pedalData.MY_COMMENT}</p>
       </div>
-    </div>
+    </MainCard>
   );
 };
 
