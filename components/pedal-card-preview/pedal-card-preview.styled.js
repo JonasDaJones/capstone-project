@@ -1,4 +1,4 @@
-import { pageExtensions } from "@/next.config";
+//import { pageExtensions } from "@/next.config";
 import styled from "styled-components";
 
 export const PedalPreview = styled.div`

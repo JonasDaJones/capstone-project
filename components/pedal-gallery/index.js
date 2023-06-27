@@ -5,11 +5,14 @@ import { ShowCase } from "./pedal-gallery.styled";
 
 const PedalGallery = () => {
   return (
-    <ShowCase>
-      {Pedals.map((pedalData, id) => (
-        <PedalCardPreview key={id} pedalData={pedalData} />
-      ))}
-    </ShowCase>
+    <div>
+      <h2>My Pedals</h2>
+      <ShowCase>
+        {Pedals.map((pedalData, id) => (
+          <PedalCardPreview key={id} pedalData={pedalData} />
+        ))}
+      </ShowCase>
+    </div>
   );
 };
 
