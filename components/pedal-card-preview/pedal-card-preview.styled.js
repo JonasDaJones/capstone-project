@@ -4,12 +4,18 @@ import styled from "styled-components";
 export const PedalPreview = styled.div`
   background-color: antiquewhite;
   width: 70%;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   padding: 1em;
   margin: 1em;
+  display: flex;
+  flex-direction: column;
   word-wrap: break-word;
   border-radius: 5px;
+  }
+`;
+
+export const ImageWrapper = styled.figure`
+  display: flex;
+  justify-content: center;
 `;
 
 export const TagContainer = styled.div`

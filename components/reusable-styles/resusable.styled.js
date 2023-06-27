@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.header`
+const HeaderWrapper = styled.header`
   position: fixed;
   top: 0;
   left: 0;
@@ -12,12 +12,13 @@ export const HeaderWrapper = styled.header`
   justify-content: center;
 `;
 
-const HeaderTitle = styled.h1`
+const HeaderTitle = styled.h2`
   font-size: 2rem;
   color: #333333;
+  margin: 0 auto;
 `;
 
-const Header = ({ title }) => {
+export const Header = ({ title }) => {
   return (
     <HeaderWrapper>
       <HeaderTitle>{title}</HeaderTitle>
