@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import { Preview, TagContainer, Tag } from "./pedal-card-preview.styled";
+import { PedalPreview, TagContainer, Tag } from "./pedal-card-preview.styled";
 
 const PedalCardPreview = ({ pedalData }) => {
   return (
-    <Preview>
+    <PedalPreview>
       <div>
         <h3>{pedalData.NAME}</h3>
       </div>
@@ -23,7 +23,7 @@ const PedalCardPreview = ({ pedalData }) => {
           ))}
         </TagContainer>
       </div>
-    </Preview>
+    </PedalPreview>
   );
 };
 
