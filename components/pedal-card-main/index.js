@@ -1,5 +1,6 @@
 import React from "react";
 import { Pedals } from "@/lib/pedalfx-data";
+import { Preview } from "./pedal-card-main.styled";
 import Image from "next/image";
 
 const PedalCardMain = ({ pedalData }) => {
