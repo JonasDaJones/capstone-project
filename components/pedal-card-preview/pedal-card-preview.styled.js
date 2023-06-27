@@ -1,3 +1,4 @@
+import { pageExtensions } from "@/next.config";
 import styled from "styled-components";
 
 export const Preview = styled.article`
@@ -30,8 +31,10 @@ export const Tag = styled.div`
   padding: 2px 0.5em;
   margin: 2px;
   border-radius: 5px;
+  background-color: hotpink;
 
-  background-color: #bfcadb;
+  //background-color: #bfcadb;
 `;
 
 //just for vercel
+//hellooo
