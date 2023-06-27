@@ -1,7 +1,7 @@
 import { pageExtensions } from "@/next.config";
 import styled from "styled-components";
 
-export const Preview = styled.div`
+export const PedalPreview = styled.div`
   background-color: antiquewhite;
   width: 70%;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -33,6 +33,3 @@ export const Tag = styled.div`
   border-radius: 5px;
   background-color: #bfcadb;
 `;
-
-//just for vercel
-//hellooo

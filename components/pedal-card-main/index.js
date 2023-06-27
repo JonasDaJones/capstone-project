@@ -1,11 +1,11 @@
 import React from "react";
 import { Pedals } from "@/lib/pedalfx-data";
-import { Preview } from "./pedal-card-main.styled";
+import { PedalPreview } from "./pedal-card-main.styled";
 import Image from "next/image";
 
 const PedalCardMain = ({ pedalData }) => {
   return (
-    <Preview>
+    <PedalPreview>
       <div>
         <h2>{pedalData.NAME}</h2>
       </div>
@@ -22,7 +22,7 @@ const PedalCardMain = ({ pedalData }) => {
 
         <p>{pedalData.MY_COMMENT}</p>
       </div>
-    </Preview>
+    </PedalPreview>
   );
 };
 
