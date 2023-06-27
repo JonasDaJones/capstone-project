@@ -1,20 +1,27 @@
 import React from "react";
-import { MainCard } from "./pedal-card.styled";
+import { Pedals } from "@/lib/pedalfx-data";
+import Image from "next/image";
 
 const PedalCardMain = ({ pedalData }) => {
   return (
-    <MainCard>
+    <Preview>
       <div>
-        <h3>{pedalData.NAME}</h3>
+        <h2>{pedalData.NAME}</h2>
       </div>
       <div>
-        <p>{pedalData.IMAGE}</p>
+        <Image
+          src={pedalData.imagePath}
+          alt={pedalData.name}
+          width={290}
+          height={320}
+        />
         <p>{pedalData.CATEGORY}</p>
         <p>{pedalData.MANUFACTURER}</p>
         <p>Made in: {pedalData.MADE_IN}</p>
+
         <p>{pedalData.MY_COMMENT}</p>
       </div>
-    </MainCard>
+    </Preview>
   );
 };
 
