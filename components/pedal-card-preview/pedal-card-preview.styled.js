@@ -45,7 +45,7 @@ export const Hint = styled.figcaption`
   text-align: center;
 `;
 
-export const CategoryWrapper = styled.section`
+export const CategoryWrapper = styled.div`
   background-color: transparent;
   display: flex;
   flex-wrap: wrap;

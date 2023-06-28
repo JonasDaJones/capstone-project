@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import {
   PedalPreview,
@@ -14,6 +15,12 @@ import {
 } from "./pedal-card-preview.styled";
 
 const PedalCardPreview = ({ pedalData }) => {
+  const router = useRouter();
+
+  const handleImageClick = () => {
+    router.push(`/detail/${pedalData.id}`);
+  };
+
   return (
     <PedalPreview>
       <PedalTitle>
@@ -23,7 +30,7 @@ const PedalCardPreview = ({ pedalData }) => {
 
       <CategoryWrapper>
         {pedalData.CATEGORY.map((category, index) => (
-          <div key={index}>{category}</div>
+          <p key={index}>{category}</p>
         ))}
       </CategoryWrapper>
       <ImageWrapper>
@@ -31,8 +38,10 @@ const PedalCardPreview = ({ pedalData }) => {
           src={pedalData.imagePath}
           alt={pedalData.name}
           width={200}
-          height={240}
+          height={260}
+          onClick={handleImageClick}
         />
+        <Hint>please click image for details</Hint>
       </ImageWrapper>
 
       <TagContainer>
