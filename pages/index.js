@@ -6,7 +6,6 @@ export default function HomePage() {
   return (
     <div>
       <MainHead>My Sound Journal</MainHead>
-
       <PedalGallery />
     </div>
   );

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const ShowCase = styled.section`
+export const ShowCase = styled.ul`
+  list-style: none;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
