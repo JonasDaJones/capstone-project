@@ -17,7 +17,7 @@ export const PedalPreview = styled.div`
 
 export const PedalName = styled.h3`
   margin: 3px;
-  padding: 0;
+  padding: 1px;
 `;
 
 export const PedalManufacturer = styled.p`
@@ -82,7 +82,7 @@ export const TagContainer = styled.div`
 export const Tag = styled.span`
   height: fit-content;
   width: fit-content;
-  padding: 2px 0.5em;
+  padding: 2px 2px;
   margin: 2px;
   border-radius: 5px;
   background-color: #bfcadb;

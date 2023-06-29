@@ -24,7 +24,7 @@ const PedalDetailMain = () => {
       <StyledDetailHead>
         <BackButton>Back</BackButton>
         <StyledDetailTitle>{pedalData.NAME}</StyledDetailTitle>
-        <div></div>
+        <div>...</div>
       </StyledDetailHead>
       <StyledDetailMain>
         {pedalData ? (
