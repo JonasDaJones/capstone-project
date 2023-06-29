@@ -12,7 +12,7 @@ export const PedalPreview = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   place-items: start;
-  border-radius: 5px;
+  border-radius: 3px;
 `;
 
 export const PedalName = styled.h3`
