@@ -8,7 +8,7 @@ import {
 
 export default function PedalMainPage({ pedalData }) {
   return (
-    <>
+    <main>
       <p>{pedalData.manufacturer}</p>
       <p>made in: {pedalData.made_in}</p>
 
@@ -34,6 +34,6 @@ export default function PedalMainPage({ pedalData }) {
           <Tag key={index}>{tag}</Tag>
         ))}
       </TagContainer>
-    </>
+    </main>
   );
 }

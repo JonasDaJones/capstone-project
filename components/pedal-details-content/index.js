@@ -1,8 +1,7 @@
 import React from "react";
-
 import PedalMainPage from "../pedal-details-main/index";
-import Tab2 from "./Tab2";
-import Tab3 from "./Tab3";
+import PedalSpecs from "../pedal-details-specs";
+import PedalSound from "../pedal-details-sound";
 
 const PedalDetailMainContent = ({ id }) => {
   const pedalData = pedals.find((pedal) => pedal.id === id);
@@ -12,8 +11,8 @@ const PedalDetailMainContent = ({ id }) => {
       {pedalData ? (
         <>
           <PedalMainPage pedalData={pedalData} />
-          <Tab2 pedalData={pedalData} />
-          <Tab3 pedalData={pedalData} />
+          <PedalSpecs pedalData={pedalData} />
+          <PedalSound pedalData={pedalData} />
         </>
       ) : (
         <h3>No pedal found</h3>
