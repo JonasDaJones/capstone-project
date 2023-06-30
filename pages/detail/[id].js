@@ -27,7 +27,7 @@ export default function PedalDetailMain() {
             <p>ID: {id}</p>
             <p>{pedalData.name}</p>
             <p>{pedalData.MANUFACTURER}</p>
-            <p>made in {pedalData.MADE_IN}</p>
+            <p>made in: {pedalData.MADE_IN}</p>
             <div>
               {pedalData.CATEGORY.map((category, index) => (
                 <p key={index}>{category}</p>
