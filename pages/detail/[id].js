@@ -1,32 +1,31 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { pedals } from "../../lib/pedalfx-data.js";
 import Image from "next/image";
-import styled from "styled-components";
-import { Pedals } from "../../lib/pedalfx-data.js";
-
+import BackButton from "../../components/back-button/index.js";
 import {
-  TagContainer,
   Tag,
+  TagContainer,
 } from "../../components/pedal-card-preview/pedal-card-preview.styled.js";
-import BackButton from "../../components/back-button/back-button.styled.js";
 
-const PedalDetailMain = () => {
+export default function PedalDetailMain() {
   const router = useRouter();
   const { id } = router.query;
 
-  const pedalData = Pedals.find((pedal) => pedal.id === id);
+  const pedalData = pedals.find((pedal) => pedal.id === id);
 
   return (
     <>
-      <StyledDetailHead>
+      <header>
         <BackButton>Back</BackButton>
-        <StyledDetailTitle>{pedalData.NAME}</StyledDetailTitle>
-        <div>...</div>
-      </StyledDetailHead>
-      <StyledDetailMain>
+
+        <h1>Shelf</h1>
+      </header>
+      <main>
         {pedalData ? (
           <>
             <p>ID: {id}</p>
+            <p>{pedalData.name}</p>
             <p>{pedalData.MANUFACTURER}</p>
             <p>made in {pedalData.MADE_IN}</p>
             <div>
@@ -37,16 +36,15 @@ const PedalDetailMain = () => {
             <p>{pedalData.MONO_STEREO}</p>
             <p>Bypass: {pedalData.BYPASS}</p>
 
-            <StyledTextBox>
-              nice to know: {pedalData.NICE_TO_KNOW}
-            </StyledTextBox>
+            <div>nice to know: {pedalData.NICE_TO_KNOW}</div>
             <Image
               src={pedalData.imagePath}
-              alt={pedalData.NAME}
+              alt={pedalData.name}
               width={200}
               height={260}
             />
             <p>my comment: {pedalData.MY_COMMENT}</p>
+
             <TagContainer>
               {pedalData.TAGS.map((tag, index) => (
                 <Tag key={index}>{tag}</Tag>
@@ -56,38 +54,7 @@ const PedalDetailMain = () => {
         ) : (
           <p>No pedal found</p>
         )}
-      </StyledDetailMain>
+      </main>
     </>
   );
-};
-export default PedalDetailMain;
-
-export const StyledDetailMain = styled.main`
-  background-color: antiquewhite;
-  color: black;
-`;
-
-export const StyledDetailHead = styled.header`
-  background-color: darkgray;
-  width: 100%;
-  margin: 0;
-  padding: 10px, 10px, 10px, 20px;
-  display: flex;
-  justify-content: space-between;
-  //box-shadow: 0px 10px 6px 0px #2596be;
-`;
-
-export const StyledDetailTitle = styled.h1`
-  color: whitesmoke;
-  margin: 0;
-  padding: 0;
-`;
-
-export const StyledTextBox = styled.div`
-  background-color: #bea925;
-  max-width: 350px;
-  color: black;
-  padding: 5px;
-  margin: 5px;
-  border-radius: 15px;
-`;
+}

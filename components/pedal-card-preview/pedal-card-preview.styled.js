@@ -1,9 +1,9 @@
-//import { pageExtensions } from "@/next.config";
 import styled from "styled-components";
 
 export const PedalPreview = styled.div`
   background-color: antiquewhite;
   width: 80%;
+  height: fit-content;
   max-width: 350px;
 
   padding: 0.5em;
@@ -49,7 +49,7 @@ export const CategoryWrapper = styled.div`
   background-color: transparent;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 2em;
+  padding: none;
   grid-column: 4 / span 1;
   grid-row: 1 / 2;
 
@@ -57,9 +57,7 @@ export const CategoryWrapper = styled.div`
     justify-content: flex-end;
     height: fit-content;
     width: fit-content;
-    padding: 1px 5px;
-    margin-right: 0.5em;
-    margin-top: 0.2em;
+    padding: 1px 0.5em;
     background-color: orange;
   }
 `;
