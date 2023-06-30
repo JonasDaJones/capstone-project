@@ -16,41 +16,33 @@ import {
 } from "./pedal-card-preview.styled";
 
 const PedalCardPreview = ({ pedalData }) => {
-  const router = useRouter();
-
-  const handleImageClick = () => {
-    router.push(`/detail/${pedalData.id}`);
-  };
-
   return (
     <PedalPreview>
       <PedalTitle>
         <PedalName>{pedalData.name}</PedalName>
-        <PedalManufacturer>{pedalData.MANUFACTURER}</PedalManufacturer>
+        <PedalManufacturer>{pedalData.manufacturer}</PedalManufacturer>
       </PedalTitle>
 
       <CategoryWrapper>
-        {pedalData.CATEGORY.map((category, index) => (
-          <p key={index}>{category}</p>
+        {pedalData.category.map((category) => (
+          <p key={category}>{category}</p>
         ))}
       </CategoryWrapper>
-
       <ImageWrapper>
-        <Link href={`/pages/detail/${pedalData.id}`}>
+        <Link href={`/detail/${pedalData.id}`}>
           <Image
             src={pedalData.imagePath}
             alt={pedalData.name}
             width={200}
             height={260}
-            onClick={handleImageClick}
           />
         </Link>
         <Hint>please click image for details</Hint>
       </ImageWrapper>
 
       <TagContainer>
-        {pedalData.TAGS.map((tag, index) => (
-          <Tag key={index}>{tag}</Tag>
+        {pedalData.tags.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
         ))}
       </TagContainer>
     </PedalPreview>

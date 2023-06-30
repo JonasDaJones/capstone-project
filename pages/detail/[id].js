@@ -2,10 +2,11 @@ import React from "react";
 import { useRouter } from "next/router";
 import { pedals } from "../../lib/pedalfx-data.js";
 import Image from "next/image";
-import BackButton from "../../components/back-button/index.js";
+import NavButton from "../../components/nav-button/index.js";
 import {
   Tag,
   TagContainer,
+  CategoryWrapper,
 } from "../../components/pedal-card-preview/pedal-card-preview.styled.js";
 
 export default function PedalDetailMain() {
@@ -17,7 +18,7 @@ export default function PedalDetailMain() {
   return (
     <>
       <header>
-        <BackButton>Back</BackButton>
+        <NavButton label="back" />
 
         <h1>Shelf</h1>
       </header>
@@ -26,33 +27,34 @@ export default function PedalDetailMain() {
           <>
             <p>ID: {id}</p>
             <p>{pedalData.name}</p>
-            <p>{pedalData.MANUFACTURER}</p>
-            <p>made in: {pedalData.MADE_IN}</p>
-            <div>
-              {pedalData.CATEGORY.map((category, index) => (
-                <p key={index}>{category}</p>
-              ))}
-            </div>
-            <p>{pedalData.MONO_STEREO}</p>
-            <p>Bypass: {pedalData.BYPASS}</p>
+            <p>{pedalData.manufacturer}</p>
+            <p>made in: {pedalData.made_in}</p>
 
-            <div>nice to know: {pedalData.NICE_TO_KNOW}</div>
+            <CategoryWrapper>
+              {pedalData.category.map((category) => (
+                <p key={category}>{category}</p>
+              ))}
+            </CategoryWrapper>
+            <p>{pedalData.mono_stereo}</p>
+            <p>Bypass: {pedalData.bypass}</p>
+
+            <div>nice to know: {pedalData.nice_to_know}</div>
             <Image
               src={pedalData.imagePath}
               alt={pedalData.name}
               width={200}
               height={260}
             />
-            <p>my comment: {pedalData.MY_COMMENT}</p>
+            <p>my comment: {pedalData.my_comment}</p>
 
             <TagContainer>
-              {pedalData.TAGS.map((tag, index) => (
+              {pedalData.tags.map((tag, index) => (
                 <Tag key={index}>{tag}</Tag>
               ))}
             </TagContainer>
           </>
         ) : (
-          <p>No pedal found</p>
+          <h3>No pedal found</h3>
         )}
       </main>
     </>

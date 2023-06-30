@@ -49,7 +49,7 @@ export const CategoryWrapper = styled.div`
   background-color: transparent;
   display: flex;
   flex-wrap: wrap;
-  padding: none;
+  padding: 0;
   grid-column: 4 / span 1;
   grid-row: 1 / 2;
 
