@@ -1,9 +1,9 @@
-//import { pageExtensions } from "@/next.config";
 import styled from "styled-components";
 
 export const PedalPreview = styled.div`
   background-color: antiquewhite;
   width: 80%;
+  height: fit-content;
   max-width: 350px;
 
   padding: 0.5em;
@@ -12,12 +12,12 @@ export const PedalPreview = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   place-items: start;
-  border-radius: 5px;
+  border-radius: 3px;
 `;
 
 export const PedalName = styled.h3`
   margin: 3px;
-  padding: 0;
+  padding: 1px;
 `;
 
 export const PedalManufacturer = styled.p`
@@ -45,11 +45,11 @@ export const Hint = styled.figcaption`
   text-align: center;
 `;
 
-export const CategoryWrapper = styled.section`
+export const CategoryWrapper = styled.div`
   background-color: transparent;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 2em;
+  padding: 0;
   grid-column: 4 / span 1;
   grid-row: 1 / 2;
 
@@ -57,9 +57,7 @@ export const CategoryWrapper = styled.section`
     justify-content: flex-end;
     height: fit-content;
     width: fit-content;
-    padding: 1px 5px;
-    margin-right: 0.5em;
-    margin-top: 0.2em;
+    padding: 1px 0.5em;
     background-color: orange;
   }
 `;
@@ -82,7 +80,7 @@ export const TagContainer = styled.div`
 export const Tag = styled.span`
   height: fit-content;
   width: fit-content;
-  padding: 2px 0.5em;
+  padding: 2px 2px;
   margin: 2px;
   border-radius: 5px;
   background-color: #bfcadb;

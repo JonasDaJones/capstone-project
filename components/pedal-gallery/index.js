@@ -1,6 +1,6 @@
 import React from "react";
 import PedalCardPreview from "../pedal-card-preview/index";
-import { Pedals } from "../../lib/pedalfx-data";
+import { pedals } from "../../lib/pedalfx-data";
 import { ShowCase, GalleryWrapper } from "./pedal-gallery.styled";
 
 const PedalGallery = () => {
@@ -8,7 +8,7 @@ const PedalGallery = () => {
     <GalleryWrapper>
       <h2>My Pedals</h2>
       <ShowCase>
-        {Pedals.map((pedalData, id) => (
+        {pedals.map((pedalData, id) => (
           <PedalCardPreview key={id} pedalData={pedalData} />
         ))}
       </ShowCase>
