@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PedalPreview = styled.div`
-  background-color: antiquewhite;
+  background-color: #706470;
   width: 80%;
   height: fit-content;
   max-width: 350px;
@@ -42,6 +42,11 @@ export const ImageWrapper = styled.figure`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0px -5px 15px 6px rgba(255, 255, 255, 0.98);
+  }
 
   //grid-column: 1 / span 4;
   //grid-row: 2 / span 2;
@@ -49,14 +54,19 @@ export const ImageWrapper = styled.figure`
 `;
 
 export const Hint = styled.figcaption`
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 5px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
   text-align: center;
 `;
 
 export const CategoryWrapper = styled.div`
   grid-area: c;
   display: flex;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
   padding: 0;
   margin-right: 10px;
