@@ -9,34 +9,43 @@ export const PedalPreview = styled.div`
   padding: 0.5em;
   margin: 0.75em;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  //grid-template-columns: 1fr 1fr 1fr 1fr;
+  //grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "a b c"
+    "d e f"
+    "g g g"
+    "h h h";
   place-items: start;
   border-radius: 3px;
 `;
 
 export const PedalName = styled.h3`
+  grid-area: a;
   margin: 3px;
   padding: 1px;
 `;
 
 export const PedalManufacturer = styled.p`
+  grid-area: d;
   margin: 0;
   margin-bottom: 1em;
   font-weight: bold;
 `;
 
 export const PedalTitle = styled.div`
-  grid-column: 1 / span 2;
+  //grid-column: 1 / span 2;
 `;
 
 export const ImageWrapper = styled.figure`
+  grid-area: g;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  grid-column: 1 / span 4;
-  grid-row: 2 / span 2;
-  justify-self: center;
+
+  //grid-column: 1 / span 4;
+  //grid-row: 2 / span 2;
+  //justify-self: center;
 `;
 
 export const Hint = styled.figcaption`
@@ -46,25 +55,30 @@ export const Hint = styled.figcaption`
 `;
 
 export const CategoryWrapper = styled.div`
-  background-color: transparent;
+  grid-area: c;
   display: flex;
   flex-wrap: wrap;
   padding: 0;
-  grid-column: 4 / span 1;
-  grid-row: 1 / 2;
+  margin-right: 10px;
+  background-color: transparent;
+  //grid-column: 4 / span 1;
+  //grid-row: 1 / 2;
 
   > * {
     justify-content: flex-end;
     height: fit-content;
     width: fit-content;
     padding: 1px 0.5em;
+    margin: 0;
     background-color: orange;
   }
 `;
 
 export const TagContainer = styled.div`
-  grid-column: 1 / -1;
+  grid-area: h;
+  //grid-column: 1 / -1;
   align-self: flex-end;
+  margin-right: 10px;
   background-color: transparent;
   display: flex;
   flex-wrap: wrap;
@@ -78,7 +92,6 @@ export const TagContainer = styled.div`
 `;
 
 export const Tag = styled.span`
-  height: fit-content;
   width: fit-content;
   padding: 2px 2px;
   margin: 2px;

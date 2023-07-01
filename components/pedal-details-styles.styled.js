@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-export const StyledDetailMain = styled.main`
-  background-color: antiquewhite;
-  color: black;
-`;
-
 export const StyledDetailHead = styled.header`
   background-color: darkgray;
   width: 100%;
