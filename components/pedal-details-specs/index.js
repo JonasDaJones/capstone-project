@@ -3,7 +3,7 @@ export default function PedalSpecs({ pedalData }) {
     <main>
       <p>voltage: {pedalData.voltage}</p>
       <p>battery: {pedalData.battery}</p>
-      <p>{polarity}</p>
+      <p>{pedalData.polarity}</p>
       <p>
         impedance in/out: {pedalData.input_impedance}/{" "}
         {pedalData.output_impedance}
