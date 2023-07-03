@@ -8,31 +8,29 @@ export const PedalPreview = styled.div`
   margin: 0.75em;
   display: grid;
   grid-template-areas:
-    "a b c"
-    "d e f"
-    "g g g"
-    "h h h";
+    "name . category"
+    "manufacturer . category"
+    "image image image"
+    "tags tags tags";
   place-items: start;
   border-radius: 3px;
 `;
 
 export const PedalName = styled.h3`
-  grid-area: a;
+  grid-area: name;
   margin: 3px;
   padding: 1px;
   color: whitesmoke;
 `;
 
 export const PedalManufacturer = styled.p`
-  grid-area: d;
-  margin: 0;
-  margin-bottom: 1em;
+  grid-area: manufacturer;
   font-weight: bold;
   color: whitesmoke;
 `;
 
 export const ImageWrapper = styled.figure`
-  grid-area: g;
+  grid-area: image;
   justify-self: center;
   position: relative;
   &:hover {
@@ -51,11 +49,12 @@ export const Hint = styled.figcaption`
 `;
 
 export const CategoryWrapper = styled.div`
-  grid-area: c;
+  grid-area: category;
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: wrap;
   padding: 0;
+  margin-bottom: 1em;
   background-color: transparent;
 
   > * {
@@ -71,7 +70,7 @@ export const CategoryWrapper = styled.div`
 `;
 
 export const TagContainer = styled.div`
-  grid-area: h;
+  grid-area: tags;
   align-self: flex-end;
   background-color: transparent;
   display: flex;

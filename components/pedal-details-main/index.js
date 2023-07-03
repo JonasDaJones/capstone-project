@@ -2,38 +2,51 @@ import React from "react";
 import Image from "next/image";
 import {
   CategoryWrapper,
+  ImageWrapper,
   Tag,
   TagContainer,
 } from "../pedal-card-preview/pedal-card-preview.styled";
+import {
+  StyledBypass,
+  StyledComment,
+  StyledContentMain,
+  StyledMono,
+  StyledPedalManufacturerDetail,
+  StyledTipp,
+} from "./pedal-main.styled";
 
 export default function PedalMainPage({ pedalData }) {
   return (
-    <main>
-      <p>{pedalData.manufacturer}</p>
-      <p>made in: {pedalData.made_in}</p>
+    <StyledContentMain>
+      <StyledPedalManufacturerDetail>
+        {pedalData.manufacturer}, {pedalData.made_in}
+      </StyledPedalManufacturerDetail>
 
       <CategoryWrapper>
         {pedalData.category.map((category) => (
           <p key={category}>{category}</p>
         ))}
       </CategoryWrapper>
-      <p>{pedalData.mono_stereo}</p>
-      <p>Bypass: {pedalData.bypass}</p>
+      <StyledMono>{pedalData.mono_stereo}</StyledMono>
+      <StyledBypass>{pedalData.bypass} bypass</StyledBypass>
 
-      <div>nice to know: {pedalData.nice_to_know}</div>
-      <Image
-        src={pedalData.imagePath}
-        alt={pedalData.name}
-        width={200}
-        height={260}
-      />
-      <p>my comment: {pedalData.my_comment}</p>
+      <StyledTipp>nice to know: {pedalData.nice_to_know}</StyledTipp>
+      <ImageWrapper>
+        <Image
+          src={pedalData.imagePath}
+          alt={pedalData.name}
+          width={150}
+          height={200}
+        />
+      </ImageWrapper>
+
+      <StyledComment>my comment: {pedalData.my_comment}</StyledComment>
 
       <TagContainer>
         {pedalData.tags.map((tag, index) => (
           <Tag key={index}>{tag}</Tag>
         ))}
       </TagContainer>
-    </main>
+    </StyledContentMain>
   );
 }

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { pedals } from "../../lib/pedalfx-data";
-import NavButton from "../nav-button/index";
 import PedalMainPage from "../pedal-details-main/index";
 import PedalSpecs from "../pedal-details-specs";
 import PedalSound from "../pedal-details-sound";
 import {
-  StyledContentMain,
   StyledContentWrapper,
   StyledHamburger,
   StyledHead,
@@ -13,7 +11,7 @@ import {
   StyledTabBar,
   StyledTabButton,
 } from "./pedal-detail-content.styled";
-
+import BackButton from "../nav-button";
 export default function PedalDetailContent({ id }) {
   const pedalData = pedals.find((pedal) => pedal.id === id);
   const [activeTab, setActiveTab] = useState("main");
@@ -24,7 +22,7 @@ export default function PedalDetailContent({ id }) {
   return (
     <>
       <StyledHead>
-        <NavButton label="back" />
+        <BackButton />
         <StyledPedalTitle>{pedalData?.name}</StyledPedalTitle>
         <StyledHamburger>🍔</StyledHamburger>
         <StyledTabBar>
@@ -50,11 +48,11 @@ export default function PedalDetailContent({ id }) {
       </StyledHead>
       <StyledContentWrapper>
         {pedalData ? (
-          <StyledContentMain>
+          <section>
             {activeTab === "main" && <PedalMainPage pedalData={pedalData} />}
             {activeTab === "specs" && <PedalSpecs pedalData={pedalData} />}
             {activeTab === "sound" && <PedalSound pedalData={pedalData} />}
-          </StyledContentMain>
+          </section>
         ) : (
           <h3>No pedal found</h3>
         )}
