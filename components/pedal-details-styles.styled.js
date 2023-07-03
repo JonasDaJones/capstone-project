@@ -7,12 +7,11 @@ export const StyledDetailHead = styled.header`
   padding: 10px, 10px, 10px, 20px;
   display: flex;
   justify-content: space-between;
-  //box-shadow: 0px 10px 6px 0px #2596be;
 `;
 
 export const StyledDetailTitle = styled.h1`
   color: whitesmoke;
-  margin: 0;
+  margin: 1em;
   padding: 0;
 `;
 
