@@ -29,17 +29,18 @@ export const StyledTabBar = styled.div`
 `;
 
 export const StyledTabButton = styled.button`
+  opacity: ${({ active }) => (active ? "1" : "0.6")};
+  border: 0;
   width: 25%;
   height: fit-content;
   padding: 5px;
-  background-color: white;
+  background-color: whitesmoke;
   border-radius: 5px 5px 0 0;
 `;
 
 export const StyledContentMain = styled.main`
-  border: 1px solid cyan;
   background-color: whitesmoke;
-  margin: 0;
+  padding: 0.5em;
 `;
 
 export const StyledContentWrapper = styled.section`

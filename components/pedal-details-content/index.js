@@ -28,13 +28,22 @@ export default function PedalDetailContent({ id }) {
         <StyledPedalTitle>{pedalData?.name}</StyledPedalTitle>
         <StyledHamburger>🍔</StyledHamburger>
         <StyledTabBar>
-          <StyledTabButton onClick={() => handleTabClick("main")}>
+          <StyledTabButton
+            active={activeTab === "main"}
+            onClick={() => handleTabClick("main")}
+          >
             main
           </StyledTabButton>
-          <StyledTabButton onClick={() => handleTabClick("specs")}>
+          <StyledTabButton
+            active={activeTab === "specs"}
+            onClick={() => handleTabClick("specs")}
+          >
             specs
           </StyledTabButton>
-          <StyledTabButton onClick={() => handleTabClick("sound")}>
+          <StyledTabButton
+            active={activeTab === "sound"}
+            onClick={() => handleTabClick("sound")}
+          >
             sound
           </StyledTabButton>
         </StyledTabBar>
