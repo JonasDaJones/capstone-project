@@ -14,14 +14,12 @@ import {
   StyledPedalManufacturerDetail,
   StyledTipp,
 } from "./pedal-main.styled";
-
 export default function PedalMainPage({ pedalData }) {
   return (
     <StyledContentMain>
       <StyledPedalManufacturerDetail>
         {pedalData.manufacturer}, {pedalData.made_in}
       </StyledPedalManufacturerDetail>
-
       <CategoryWrapper>
         {pedalData.category.map((category) => (
           <p key={category}>{category}</p>
@@ -39,9 +37,7 @@ export default function PedalMainPage({ pedalData }) {
           height={200}
         />
       </ImageWrapper>
-
       <StyledComment>my comment: {pedalData.my_comment}</StyledComment>
-
       <TagContainer>
         {pedalData.tags.map((tag, index) => (
           <Tag key={index}>{tag}</Tag>

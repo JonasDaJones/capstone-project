@@ -18,7 +18,6 @@ export default function PedalDetailContent({ id }) {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
-
   return (
     <>
       <StyledHead>
