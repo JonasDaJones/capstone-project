@@ -5,7 +5,6 @@ import Link from "next/link";
 
 import {
   PedalPreview,
-  PedalTitle,
   PedalName,
   ImageWrapper,
   CategoryWrapper,
@@ -18,10 +17,8 @@ import {
 const PedalCardPreview = ({ pedalData }) => {
   return (
     <PedalPreview>
-      <PedalTitle>
-        <PedalName>{pedalData.name}</PedalName>
-        <PedalManufacturer>{pedalData.manufacturer}</PedalManufacturer>
-      </PedalTitle>
+      <PedalName>{pedalData.name}</PedalName>
+      <PedalManufacturer>{pedalData.manufacturer}</PedalManufacturer>
 
       <CategoryWrapper>
         {pedalData.category.map((category) => (

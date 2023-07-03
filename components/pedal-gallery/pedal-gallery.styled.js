@@ -18,7 +18,4 @@ export const ShowCase = styled.section`
 export const GalleryWrapper = styled.section`
   background-color: darkgray;
   color: black;
-  & h2 {
-    margin: 0;
-  }
 `;
