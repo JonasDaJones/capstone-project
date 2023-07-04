@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
 import { pedals } from "../../lib/pedalfx-data";
-import PedalMainPage from "../pedal-details-main/index";
+import PedalMainPage from "../pedal-details-main";
 import PedalSpecs from "../pedal-details-specs";
 import PedalSound from "../pedal-details-sound";
 import {
@@ -14,7 +13,6 @@ import {
 } from "./pedal-detail-content.styled";
 import BackButton from "../nav-button";
 export default function PedalDetailContent({ id }) {
-  const router = useRouter();
   const pedalData = pedals.find((pedal) => pedal.id === id);
   const [activeTab, setActiveTab] = useState("main");
   const handleTabClick = (tab) => {
