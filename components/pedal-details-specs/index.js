@@ -1,84 +1,105 @@
+import {
+  StyledImpedance,
+  StyledDimensions,
+  StyledCurrentDraw,
+  StyledVoltage,
+  StyledBattery,
+  StyledPolarity,
+  StyledContentSpecs,
+  StyledFootswitchList,
+  StyledKnobList,
+  StyledSwitchList,
+  StyledDipswitchList,
+  StyledJackLeftList,
+  StyledJackRightList,
+  StyledJackTopList,
+  StyledJackFrontList,
+} from "./pedal-details-specs.styled";
+
 export default function PedalSpecs({ pedalData }) {
   return (
-    <main>
-      <p>width: {pedalData.width_mm} mm</p>
-      <p>depth: {pedalData.depth_mm} mm</p>
-      <p>height: {pedalData.height_mm} mm</p>
+    <StyledContentSpecs>
+      <StyledDimensions>
+        <h4>dimensions (mm)</h4>
+        <p>width: {pedalData.width_mm}</p>
+        <p>depth: {pedalData.depth_mm}</p>
+        <p>height: {pedalData.height_mm}</p>
+      </StyledDimensions>
 
-      <p>voltage: {pedalData.voltage}</p>
-      <p>battery: {pedalData.battery}</p>
-      <p>{pedalData.polarity}</p>
+      <StyledVoltage>voltage: {pedalData.voltage}</StyledVoltage>
+      <StyledBattery>battery: {pedalData.battery}</StyledBattery>
+      <StyledPolarity>{pedalData.polarity}</StyledPolarity>
 
-      <p>
-        current draw bypass - manufacturer specs:{" "}
-        {pedalData.bypass_current_draw_manufacturer}
-      </p>
-      <p>
-        current draw engaged - manufacturer specs:{" "}
-        {pedalData.engaged_current_draw_manufacturer}
-      </p>
-      <p>
-        current draw bypass - own_measurement:{" "}
-        {pedalData.bypass_current_draw_own_measurement}
-      </p>
-      <p>
-        current draw engaged - own_measurement:{" "}
-        {pedalData.engaged_current_draw_own_measurement}
-      </p>
-
-      <p>
+      <StyledCurrentDraw>
+        <caption>current draw (mA)</caption>
+        <tr>
+          <th scope="col">measured by:</th>
+          <th scope="col">bypassed</th>
+          <th scope="col">engaged</th>
+        </tr>
+        <tr>
+          <th scope="row">manufacturer</th>
+          <td>{pedalData.bypass_current_draw_manufacturer}</td>
+          <td>{pedalData.engaged_current_draw_manufacturer}</td>
+        </tr>
+        <tr>
+          <th scope="row">me</th>
+          <td>{pedalData.bypass_current_draw_own_measurement}</td>
+          <td>{pedalData.engaged_current_draw_own_measurement}</td>
+        </tr>
+      </StyledCurrentDraw>
+      <StyledImpedance>
         impedance in/out: {pedalData.input_impedance}/{" "}
         {pedalData.output_impedance}
-      </p>
-
-      <ul>
-        <h4>footswitches</h4>
+      </StyledImpedance>
+      <StyledFootswitchList>
+        <caption>footswitches</caption>
         {pedalData.footswitches.map((footswitch) => (
           <li key={footswitch}>{footswitch}</li>
         ))}
-      </ul>
-      <ul>
-        <h4>knobs</h4>
+      </StyledFootswitchList>
+      <StyledKnobList>
+        <caption>knobs</caption>
         {pedalData.knobs.map((knob) => (
           <li key={knob}>{knob}</li>
         ))}
-      </ul>
-      <ul>
-        <h4>switches</h4>
+      </StyledKnobList>
+      <StyledSwitchList>
+        <caption>switches</caption>
         {pedalData.switches.map((haehswitch) => (
           <li key={haehswitch}>{haehswitch}</li>
         ))}
-      </ul>
-      <ul>
-        <h4>dipswitches</h4>
+      </StyledSwitchList>
+      <StyledDipswitchList>
+        <caption>dipswitches</caption>
         {pedalData.dipswitches.map((dipswitch) => (
           <li key={dipswitch}>{dipswitch}</li>
         ))}
-      </ul>
-      <ul>
-        <h4>jacks left</h4>
+      </StyledDipswitchList>
+      <StyledJackLeftList>
+        <caption>jacks left</caption>
         {pedalData.jacks_left.map((jack_left) => (
           <li key={jack_left}>{jack_left}</li>
         ))}
-      </ul>
-      <ul>
-        <h4>jacks right</h4>
+      </StyledJackLeftList>
+      <StyledJackRightList>
+        <caption>jacks right</caption>
         {pedalData.jacks_right.map((jack_right) => (
           <li key={jack_right}>{jack_right}</li>
         ))}
-      </ul>
-      <ul>
-        <h4>jacks top</h4>
+      </StyledJackRightList>
+      <StyledJackTopList>
+        <caption>jacks top</caption>
         {pedalData.jacks_top.map((jack_top) => (
           <li key={jack_top}>{jack_top}</li>
         ))}
-      </ul>
-      <ul>
-        <h4>jacks front</h4>
+      </StyledJackTopList>
+      <StyledJackFrontList>
+        <caption>jacks front</caption>
         {pedalData.jacks_front.map((jack_front) => (
           <li key={jack_front}>{jack_front}</li>
         ))}
-      </ul>
-    </main>
+      </StyledJackFrontList>
+    </StyledContentSpecs>
   );
 }
