@@ -15,7 +15,6 @@ export const StyledContentMain = styled.main`
 `;
 export const StyledMono = styled.p`
   grid-area: mono;
-  align-content: left;
 `;
 export const StyledBypass = styled.p`
   grid-area: bypass;
