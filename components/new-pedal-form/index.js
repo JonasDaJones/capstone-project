@@ -1,8 +1,7 @@
 import {
-  InnerFormContainer,
-  Input,
-  Label,
-  Select,
+  StyledFormContainer,
+  StyledInput,
+  StyledLabel,
 } from "./new-pedal-form.styled";
 
 export default function NewPedalForm() {
@@ -25,9 +24,9 @@ export default function NewPedalForm() {
     onSubmit(newPedal);
 
     return (
-      <InnerFormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
-        <Label htmlFor="name">Name</Label>
-        <Input
+      <StyledFormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
+        <StyledLabel htmlFor="name">Name</StyledLabel>
+        <StyledInput
           id="name"
           name="name"
           type="text"
@@ -35,8 +34,8 @@ export default function NewPedalForm() {
           required
         />
 
-        <Label htmlFor="manufacturer">manufacturer</Label>
-        <Input
+        <StyledLabel htmlFor="manufacturer">manufacturer</StyledLabel>
+        <StyledInput
           id="manufacturer"
           name="manufacturer"
           type="text"
@@ -44,37 +43,43 @@ export default function NewPedalForm() {
           required
         />
 
-        <Label htmlFor="made_in">made in</Label>
-        <Input
+        <StyledLabel htmlFor="made_in">made in</StyledLabel>
+        <StyledInput
           id="made_in"
           name="made_in"
           type="text"
           defaultValue={defaultData?.made_in}
         />
-        <Label htmlFor="width">width</Label>
-        <Input
+        <StyledLabel htmlFor="width">width</StyledLabel>
+        <StyledInput
           id="width"
           name="width"
           type="number"
           defaultValue={defaultData?.width}
         />
-        <Label htmlFor="depth">depth</Label>
-        <Input
+        <StyledLabel htmlFor="depth">depth</StyledLabel>
+        <StyledInput
           id="depth"
           name="depth"
           type="number"
           defaultValue={defaultData?.depth}
         />
-        <Label htmlFor="height">height</Label>
-        <Input
+        <StyledLabel htmlFor="height">height</StyledLabel>
+        <StyledInput
           id="height"
           name="height"
           type="number"
           defaultValue={defaultData?.height}
         />
-
-        <button type="submit">save and exit</button>
-      </InnerFormContainer>
+        <StyledButtonContainer>
+          <li>
+            <button type="submit">save and exit</button>
+          </li>
+          <li>
+            <button type="reset"></button>
+          </li>
+        </StyledButtonContainer>
+      </StyledFormContainer>
     );
   }
 }
