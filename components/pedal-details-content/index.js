@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { pedals } from "../../lib/pedalfx-data";
-import PedalMainPage from "../pedal-details-main/index";
+import PedalMainPage from "../pedal-details-main";
 import PedalSpecs from "../pedal-details-specs";
 import PedalSound from "../pedal-details-sound";
 import {
@@ -18,7 +18,6 @@ export default function PedalDetailContent({ id }) {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
-
   return (
     <>
       <StyledHead>

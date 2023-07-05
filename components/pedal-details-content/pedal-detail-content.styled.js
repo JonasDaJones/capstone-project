@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 export const StyledHead = styled.header`
   background-color: #706470;
   display: grid;
@@ -9,7 +8,6 @@ export const StyledHead = styled.header`
     "a b b c "
     "d d d d";
 `;
-
 export const StyledPedalTitle = styled.h1`
   grid-area: b;
   padding: 0;
@@ -20,14 +18,12 @@ export const StyledHamburger = styled.span`
   grid-area: c;
   text-align: right;
 `;
-
 export const StyledTabBar = styled.div`
   grid-area: d;
   display: flex;
   flex-direction: row;
   background-color: transparent;
 `;
-
 export const StyledTabButton = styled.button`
   opacity: ${({ active }) => (active ? "1" : "0.6")};
   width: 25%;
@@ -36,7 +32,6 @@ export const StyledTabButton = styled.button`
   background-color: whitesmoke;
   border-radius: 5px 5px 0 0;
 `;
-
 export const StyledContentWrapper = styled.section`
   height: 100vh;
   background-color: #706470;

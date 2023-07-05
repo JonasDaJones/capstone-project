@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Link from "next/link";
-
 export const StyledNavButton = styled(Link)`
   text-decoration: none;
   font-weight: bold;

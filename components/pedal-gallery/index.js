@@ -2,7 +2,6 @@ import React from "react";
 import PedalCardPreview from "../pedal-card-preview/index";
 import { pedals } from "../../lib/pedalfx-data";
 import { ShowCase, GalleryWrapper } from "./pedal-gallery.styled";
-
 const PedalGallery = () => {
   return (
     <GalleryWrapper>
@@ -15,5 +14,4 @@ const PedalGallery = () => {
     </GalleryWrapper>
   );
 };
-
 export default PedalGallery;
