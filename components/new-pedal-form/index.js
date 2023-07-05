@@ -1,5 +1,5 @@
 import { FxCategories } from "../../lib/fx-categories";
-import TagInput from "../tag-input";
+import TagInput from "../form-tag-input";
 
 import {
   StyledFormContainer,
