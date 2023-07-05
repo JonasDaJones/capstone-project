@@ -58,7 +58,7 @@ export default function NewPedalForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name:</label>
+      <label htmlFor="name">name:</label>
       <input
         type="text"
         id="name"
@@ -67,7 +67,7 @@ export default function NewPedalForm() {
         required
       />
 
-      <label htmlFor="manufacturer">Manufacturer:</label>
+      <label htmlFor="manufacturer">manufacturer:</label>
       <input
         type="text"
         id="manufacturer"
@@ -76,7 +76,7 @@ export default function NewPedalForm() {
         required
       />
 
-      <label htmlFor="madeIn">Made In:</label>
+      <label htmlFor="madeIn">made in:</label>
       <input
         type="text"
         id="madeIn"
@@ -84,8 +84,20 @@ export default function NewPedalForm() {
         onChange={(event) => setMadeIn(event.target.value)}
         required
       />
+      <label htmlFor="stereo">stereo:</label>
+      <input
+        type="checkbox"
+        id="stereo"
+        checked={stereo}
+        onChange={(event) => setStereo(event.target.checked)}
+      />
+      <label htmlFor="category">category:</label>
+      <CategoryInput
+        FxCategories={FxCategories}
+        onSelectCategory={handleCategorySelect}
+      />
 
-      <label htmlFor="width">Width:</label>
+      <label htmlFor="width">width:</label>
       <input
         type="number"
         id="width"
@@ -94,7 +106,7 @@ export default function NewPedalForm() {
         required
       />
 
-      <label htmlFor="depth">Depth:</label>
+      <label htmlFor="depth">depth:</label>
       <input
         type="number"
         id="depth"
@@ -103,7 +115,7 @@ export default function NewPedalForm() {
         required
       />
 
-      <label htmlFor="height">Height:</label>
+      <label htmlFor="height">height:</label>
       <input
         type="number"
         id="height"
@@ -111,23 +123,8 @@ export default function NewPedalForm() {
         onChange={(event) => setHeight(Number(event.target.value))}
         required
       />
-
-      <label htmlFor="stereo">Stereo:</label>
-      <input
-        type="checkbox"
-        id="stereo"
-        checked={stereo}
-        onChange={(event) => setStereo(event.target.checked)}
-      />
-
-      <label htmlFor="tags">Tags:</label>
+      <label htmlFor="tags">tags:</label>
       <TagInput onSaveTag={handleTagSave} />
-
-      <label htmlFor="category">Category:</label>
-      <CategoryInput
-        FxCategories={FxCategories}
-        onSelectCategory={handleCategorySelect}
-      />
 
       <button type="submit">Submit</button>
       <button type="button" onClick={handleCancel}>
