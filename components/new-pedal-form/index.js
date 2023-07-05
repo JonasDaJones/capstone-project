@@ -1,88 +1,138 @@
-import { FxCategories } from "../../lib/fx-categories";
+import { useState } from "react";
 import TagInput from "../form-tag-input";
-
-import {
-  StyledFormContainer,
-  StyledInput,
-  StyledLabel,
-} from "./new-pedal-form.styled";
+import CategoryInput from "../form-category-input";
+import { FxCategories } from "../../lib/fx-categories";
+import { v4 as uuidv4 } from "uuid";
 
 export default function NewPedalForm() {
-  function handleSubmit(event) {
+  const [name, setName] = useState("");
+  const [manufacturer, setManufacturer] = useState("");
+  const [madeIn, setMadeIn] = useState("");
+  const [width, setWidth] = useState(0);
+  const [depth, setDepth] = useState(0);
+  const [height, setHeight] = useState(0);
+  const [stereo, setStereo] = useState(false);
+  const [tags, setTags] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const handleTagSave = (tag) => {
+    setTags([...tags, tag]);
+  };
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const handleCancel = () => {
+    setName("");
+    setManufacturer("");
+    setMadeIn("");
+    setWidth(0);
+    setDepth(0);
+    setHeight(0);
+    setStereo(0);
+    setTags([]);
+    setSelectedCategory("");
+  };
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
+
     const newPedal = {
-      uuid: uuid(),
-      name: data.name,
-      manufacturer: data.manufacturer,
-      category: data.category,
-      made_in: data.made_in,
-      stereo: false,
-      width: data.width,
-      depth: data.depth,
-      height: data.height,
-      //tags: "",
+      id: uuidv4(),
+      name: name,
+      manufacturer: manufacturer,
+      madeIn: madeIn,
+      width: width,
+      depth: depth,
+      height: height,
+      stereo: stereo,
+      tags: tags,
+      category: selectedCategory,
     };
-    onSubmit(newPedal);
 
-    return (
-      <StyledFormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
-        <StyledLabel htmlFor="name">Name</StyledLabel>
-        <StyledInput
-          id="name"
-          name="name"
-          type="text"
-          defaultValue={defaultData?.name}
-          required
-        />
+    localStorage.setItem("newPedal", JSON.stringify(newPedal));
 
-        <StyledLabel htmlFor="manufacturer">manufacturer</StyledLabel>
-        <StyledInput
-          id="manufacturer"
-          name="manufacturer"
-          type="text"
-          defaultValue={defaultData?.manufacturer}
-          required
-        />
+    handleCancel();
+  };
 
-        <StyledLabel htmlFor="made_in">made in</StyledLabel>
-        <StyledInput
-          id="made_in"
-          name="made_in"
-          type="text"
-          defaultValue={defaultData?.made_in}
-        />
-        <StyledLabel htmlFor="width">width</StyledLabel>
-        <StyledInput
-          id="width"
-          name="width"
-          type="number"
-          defaultValue={defaultData?.width}
-        />
-        <StyledLabel htmlFor="depth">depth</StyledLabel>
-        <StyledInput
-          id="depth"
-          name="depth"
-          type="number"
-          defaultValue={defaultData?.depth}
-        />
-        <StyledLabel htmlFor="height">height</StyledLabel>
-        <StyledInput
-          id="height"
-          name="height"
-          type="number"
-          defaultValue={defaultData?.height}
-        />
-        <StyledButtonContainer>
-          <li>
-            <button type="submit">save and exit</button>
-          </li>
-          <li>
-            <button type="reset"></button>
-          </li>
-        </StyledButtonContainer>
-      </StyledFormContainer>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        value={name}
+        onChange={(event) => setName(event.target.value)}
+        required
+      />
+
+      <label htmlFor="manufacturer">Manufacturer:</label>
+      <input
+        type="text"
+        id="manufacturer"
+        value={manufacturer}
+        onChange={(event) => setManufacturer(event.target.value)}
+        required
+      />
+
+      <label htmlFor="madeIn">Made In:</label>
+      <input
+        type="text"
+        id="madeIn"
+        value={madeIn}
+        onChange={(event) => setMadeIn(event.target.value)}
+        required
+      />
+
+      <label htmlFor="width">Width:</label>
+      <input
+        type="number"
+        id="width"
+        value={width}
+        onChange={(event) => setWidth(Number(event.target.value))}
+        required
+      />
+
+      <label htmlFor="depth">Depth:</label>
+      <input
+        type="number"
+        id="depth"
+        value={depth}
+        onChange={(event) => setDepth(Number(event.target.value))}
+        required
+      />
+
+      <label htmlFor="height">Height:</label>
+      <input
+        type="number"
+        id="height"
+        value={height}
+        onChange={(event) => setHeight(Number(event.target.value))}
+        required
+      />
+
+      <label htmlFor="stereo">Stereo:</label>
+      <input
+        type="checkbox"
+        id="stereo"
+        checked={stereo}
+        onChange={(event) => setStereo(event.target.checked)}
+      />
+
+      <label htmlFor="tags">Tags:</label>
+      <TagInput onSaveTag={handleTagSave} />
+
+      <label htmlFor="category">Category:</label>
+      <CategoryInput
+        FxCategories={FxCategories}
+        onSelectCategory={handleCategorySelect}
+      />
+
+      <button type="submit">Submit</button>
+      <button type="button" onClick={handleCancel}>
+        Cancel
+      </button>
+    </form>
+  );
 }
