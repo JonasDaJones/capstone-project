@@ -1,41 +1,28 @@
 import React, { useState } from "react";
 
-export const TagInput = () => {
-  const [tags, setTags] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+const TagInput = ({ onSaveTag }) => {
+  const [tagInput, setTagInput] = useState("");
+  const handleTagInputChange = (event) => {
+    setTagInput(event.target.value);
   };
-
-  const handleInputKeyDown = (event) => {
-    if (event.key === "Enter" && inputValue.trim() !== "") {
-      setTags([...tags, inputValue.trim()]);
-      setInputValue("");
+  const handleAddTag = () => {
+    if (tag.input.trim() !== "") {
+      onSaveTag(tagInput.trim());
+      setTagInput("");
     }
-  };
-
-  const handleTagDelete = (tag) => {
-    const updatedTags = tags.filter((t) => t !== tag);
-    setTags(updatedTags);
   };
 
   return (
     <div>
-      <div>
-        {tags.map((tag) => (
-          <span key={tag} onClick={() => handleTagDelete(tag)}>
-            #{tag} &times;
-          </span>
-        ))}
-      </div>
       <input
         type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-        onKeyDown={handleInputKeyDown}
-        placeholder="your can tag here"
+        value={tagInput}
+        onChange={handleTagInputChange}
+        placeholder="you can tag here"
       />
+      <button onClick={handleAddTag}>add</button>
     </div>
   );
 };
+
+export default TagInput;
