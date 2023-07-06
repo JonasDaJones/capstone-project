@@ -5,7 +5,8 @@ const TagInput = ({ onSaveTag }) => {
   const handleTagInputChange = (event) => {
     setTagInput(event.target.value);
   };
-  const handleAddTag = () => {
+  const handleAddTag = (event) => {
+    event.preventDefault();
     if (tag.input.trim() !== "") {
       onSaveTag(tagInput.trim());
       setTagInput("");
