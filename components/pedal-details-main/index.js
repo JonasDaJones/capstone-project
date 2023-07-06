@@ -9,10 +9,14 @@ import {
 import {
   StyledBypass,
   StyledComment,
+  StyledCommentField,
+  StyledCommentLegend,
   StyledContentMain,
+  StyledLegend,
   StyledMono,
   StyledPedalManufacturerDetail,
   StyledTipp,
+  StyledTippField,
 } from "./pedal-main.styled";
 export default function PedalMainPage({ pedalData }) {
   return (
@@ -27,8 +31,11 @@ export default function PedalMainPage({ pedalData }) {
       </CategoryWrapper>
       <StyledMono>{pedalData.mono_stereo}</StyledMono>
       <StyledBypass>{pedalData.bypass} bypass</StyledBypass>
-
-      <StyledTipp>nice to know: {pedalData.nice_to_know}</StyledTipp>
+      <StyledTippField>
+        <StyledLegend>nice to know</StyledLegend>
+        <StyledTipp>{pedalData.nice_to_know}</StyledTipp>
+        grid-area: comment;
+      </StyledTippField>
       <ImageWrapper>
         <Image
           src={pedalData.imagePath}
@@ -37,7 +44,10 @@ export default function PedalMainPage({ pedalData }) {
           height={200}
         />
       </ImageWrapper>
-      <StyledComment>my comment: {pedalData.my_comment}</StyledComment>
+      <StyledCommentField>
+        <StyledLegend>my comment</StyledLegend>
+        <StyledComment>{pedalData.my_comment}</StyledComment>
+      </StyledCommentField>
       <TagContainer>
         {pedalData.tags.map((tag, index) => (
           <Tag key={index}>{tag}</Tag>

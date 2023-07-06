@@ -19,15 +19,27 @@ export const StyledMono = styled.p`
 export const StyledBypass = styled.p`
   grid-area: bypass;
 `;
-export const StyledComment = styled.cite`
+export const StyledCommentField = styled.fieldset`
   grid-area: comment;
+  background: transparent;
+`;
+export const StyledLegend = styled.legend`
   background-color: #90b524;
   color: whitesmoke;
   border-radius: 15px;
   padding: 1em;
 `;
-export const StyledTipp = styled.p`
+export const StyledComment = styled.cite`
+  background-color: #90b524;
+  color: whitesmoke;
+  border-radius: 15px;
+  padding: 1em;
+`;
+export const StyledTippField = styled.fieldset`
   grid-area: tipp;
+  background: transparent;
+`;
+export const StyledTipp = styled.p`
   background-color: #90b524;
   color: whitesmoke;
   border-radius: 15px;
