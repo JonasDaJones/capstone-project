@@ -6,14 +6,12 @@ import { v4 as uuidv4 } from "uuid";
 import {
   StyledButtonContainer,
   StyledDimension,
-  StyledDimensionInput,
   StyledDimensionsWrapper,
   StyledFormContainer,
   StyledInput,
   StyledLabel,
   StyledStereoWrapper,
 } from "./new-pedal-form.styled";
-import { StyledDimensions } from "../pedal-details-specs/pedal-details-specs.styled";
 
 export default function NewPedalForm() {
   const [name, setName] = useState("");
@@ -34,8 +32,9 @@ export default function NewPedalForm() {
     setSelectedCategory(category);
   };
 
-  const handleCancel = () => {
-    setName("");
+  const handleCancel = (event) => {
+    event.target.reset();
+    /* setName("");
     setManufacturer("");
     setMadeIn("");
     setWidth(0);
@@ -43,7 +42,7 @@ export default function NewPedalForm() {
     setHeight(0);
     setStereo(0);
     setTags([]);
-    setSelectedCategory("");
+    setSelectedCategory(""); */
   };
 
   const handleSubmit = (event) => {
@@ -69,7 +68,7 @@ export default function NewPedalForm() {
   };
 
   return (
-    <StyledFormContainer onSubmit={handleSubmit}>
+    <StyledFormContainer onSubmit={handleSubmit} onReset={handleCancel}>
       <StyledLabel htmlFor="name">name:</StyledLabel>
       <StyledInput
         type="text"
@@ -107,6 +106,7 @@ export default function NewPedalForm() {
       </StyledStereoWrapper>
       <StyledLabel htmlFor="category">category:</StyledLabel>
       <CategoryInput
+        id="category"
         FxCategories={FxCategories}
         onSelectCategory={handleCategorySelect}
       />
@@ -144,11 +144,9 @@ export default function NewPedalForm() {
       </StyledDimensionsWrapper>
 
       <StyledLabel htmlFor="tags">tags:</StyledLabel>
-      <TagInput onSaveTag={handleTagSave} />
+      <TagInput id="tags" onSaveTag={handleTagSave} />
       <StyledButtonContainer>
-        <button type="button" onClick={handleCancel}>
-          Cancel
-        </button>
+        <button type="reset">Cancel</button>
         <button type="submit">Submit</button>
       </StyledButtonContainer>
     </StyledFormContainer>
