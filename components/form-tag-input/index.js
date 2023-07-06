@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { StyledTagView } from "./tag-input.styled";
 
 const TagInput = ({ onSaveTag }) => {
   const [tagInput, setTagInput] = useState("");
+  const [addedTags, setAddedTags] = useState([]);
   const handleTagInputChange = (event) => {
     setTagInput(event.target.value);
   };
   const handleAddTag = (event) => {
     event.preventDefault();
-    if (tag.input.trim() !== "") {
+    if (tagInput.trim() !== "") {
       onSaveTag(tagInput.trim());
+      setAddedTags((prevTags) => [...prevTags, tagInput.trim()]);
       setTagInput("");
     }
   };
@@ -22,6 +25,7 @@ const TagInput = ({ onSaveTag }) => {
         placeholder="you can tag here"
       />
       <button onClick={handleAddTag}>add</button>
+      <StyledTagView>Tags: {addedTags.join(", ")}</StyledTagView>
     </div>
   );
 };

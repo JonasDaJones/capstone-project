@@ -1,6 +1,11 @@
-/* import styled from "styled-components";
+import styled from "styled-components";
 
-const StyledTags = styled.div`
+export const StyledTagView = styled.div`
+  height: 3em;
+  border: 2px solid #90b524;
+`;
+
+/* const StyledTags = styled.div`
   border: 2px solid #540b0e;
   border-radius: 0.5em;
   display: flex;

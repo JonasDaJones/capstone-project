@@ -3,6 +3,17 @@ import TagInput from "../form-tag-input";
 import CategoryInput from "../form-category-input";
 import { FxCategories } from "../../lib/fx-categories";
 import { v4 as uuidv4 } from "uuid";
+import {
+  StyledButtonContainer,
+  StyledDimension,
+  StyledDimensionInput,
+  StyledDimensionsWrapper,
+  StyledFormContainer,
+  StyledInput,
+  StyledLabel,
+  StyledStereoWrapper,
+} from "./new-pedal-form.styled";
+import { StyledDimensions } from "../pedal-details-specs/pedal-details-specs.styled";
 
 export default function NewPedalForm() {
   const [name, setName] = useState("");
@@ -58,9 +69,9 @@ export default function NewPedalForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="name">name:</label>
-      <input
+    <StyledFormContainer onSubmit={handleSubmit}>
+      <StyledLabel htmlFor="name">name:</StyledLabel>
+      <StyledInput
         type="text"
         id="name"
         value={name}
@@ -68,8 +79,8 @@ export default function NewPedalForm() {
         required
       />
 
-      <label htmlFor="manufacturer">manufacturer:</label>
-      <input
+      <StyledLabel htmlFor="manufacturer">manufacturer:</StyledLabel>
+      <StyledInput
         type="text"
         id="manufacturer"
         value={manufacturer}
@@ -77,60 +88,69 @@ export default function NewPedalForm() {
         required
       />
 
-      <label htmlFor="madeIn">made in:</label>
-      <input
+      <StyledLabel htmlFor="madeIn">made in:</StyledLabel>
+      <StyledInput
         type="text"
         id="madeIn"
         value={madeIn}
         onChange={(event) => setMadeIn(event.target.value)}
         required
       />
-      <label htmlFor="stereo">stereo:</label>
-      <input
-        type="checkbox"
-        id="stereo"
-        checked={stereo}
-        onChange={(event) => setStereo(event.target.checked)}
-      />
-      <label htmlFor="category">category:</label>
+      <StyledStereoWrapper>
+        <StyledLabel htmlFor="stereo">stereo?</StyledLabel>
+        <StyledInput
+          type="checkbox"
+          id="stereo"
+          checked={stereo}
+          onChange={(event) => setStereo(event.target.checked)}
+        />
+      </StyledStereoWrapper>
+      <StyledLabel htmlFor="category">category:</StyledLabel>
       <CategoryInput
         FxCategories={FxCategories}
         onSelectCategory={handleCategorySelect}
       />
+      <StyledDimensionsWrapper>
+        <StyledDimension>
+          <StyledLabel htmlFor="width">width (mm):</StyledLabel>
+          <input
+            type="number"
+            id="width"
+            value={width}
+            onChange={(event) => setWidth(Number(event.target.value))}
+            required
+          />
+        </StyledDimension>
+        <StyledDimension>
+          <StyledLabel htmlFor="depth">depth (mm):</StyledLabel>
+          <input
+            type="number"
+            id="depth"
+            value={depth}
+            onChange={(event) => setDepth(Number(event.target.value))}
+            required
+          />
+        </StyledDimension>
+        <StyledDimension>
+          <StyledLabel htmlFor="height">height (mm):</StyledLabel>
+          <input
+            type="number"
+            id="height"
+            value={height}
+            onChange={(event) => setHeight(Number(event.target.value))}
+            required
+          />
+        </StyledDimension>
+      </StyledDimensionsWrapper>
 
-      <label htmlFor="width">width:</label>
-      <input
-        type="number"
-        id="width"
-        value={width}
-        onChange={(event) => setWidth(Number(event.target.value))}
-        required
-      />
-
-      <label htmlFor="depth">depth:</label>
-      <input
-        type="number"
-        id="depth"
-        value={depth}
-        onChange={(event) => setDepth(Number(event.target.value))}
-        required
-      />
-
-      <label htmlFor="height">height:</label>
-      <input
-        type="number"
-        id="height"
-        value={height}
-        onChange={(event) => setHeight(Number(event.target.value))}
-        required
-      />
-      <label htmlFor="tags">tags:</label>
+      <StyledLabel htmlFor="tags">tags:</StyledLabel>
       <TagInput onSaveTag={handleTagSave} />
-
-      <button type="submit">Submit</button>
-      <button type="button" onClick={handleCancel}>
-        Cancel
-      </button>
-    </form>
+      <StyledButtonContainer>
+        <button type="button" onClick={handleCancel}>
+          Cancel
+        </button>
+        <button type="submit">Submit</button>
+      </StyledButtonContainer>
+    </StyledFormContainer>
   );
 }

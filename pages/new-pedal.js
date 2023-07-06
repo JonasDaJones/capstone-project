@@ -3,11 +3,9 @@ import NewPedalForm from "../components/new-pedal-form";
 
 export default function AddPedal() {
   return (
-    (<header>New Pedal \o/</header>),
-    (
-      <main>
-        <NewPedalForm />
-      </main>
-    )
+    <>
+      <h1>New Pedal \o/</h1>
+      <NewPedalForm />
+    </>
   );
 }

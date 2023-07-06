@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { StyledCategoryView } from "./category-input.styled";
 export default function CategoryInput({ FxCategories }) {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
@@ -29,7 +30,7 @@ export default function CategoryInput({ FxCategories }) {
           </label>
         ))}
       </details>
-      <div>Selected Categories: {selectedCategories.join(", ")}</div>
+      <StyledCategoryView>{selectedCategories.join(", ")}</StyledCategoryView>
     </div>
   );
 }
