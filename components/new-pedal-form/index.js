@@ -51,7 +51,8 @@ export default function NewPedalForm() {
       category: selectedCategory,
     };
 
-    localStorage.setItem("newPedal", JSON.stringify(newPedal));
+    console.log(newPedal);
+    //localStorage.setItem("newPedal", JSON.stringify(newPedal));
 
     handleCancel();
   };
