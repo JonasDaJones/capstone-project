@@ -31,14 +31,14 @@ export default function CategoryInput({
               value={category}
               checked={selectedCategories.includes(category)}
               onChange={handleCategoryChange}
-              onCancel={onCancel}
+              //onCancel={onCancel}
             />
             {category}
           </label>
         ))}
       </details>
       <StyledCategoryView
-        onCancel={onCancel}
+        //onCancel={onCancel}
         selectedCategories={selectedCategories}
         setSelectedCategories={setSelectedCategories}
       >

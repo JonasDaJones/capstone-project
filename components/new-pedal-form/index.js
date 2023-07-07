@@ -64,7 +64,7 @@ export default function NewPedalForm() {
     console.log(newPedal);
     //localStorage.setItem("newPedal", JSON.stringify(newPedal));
 
-    handleCancel();
+    //handleCancel();
   };
 
   return (

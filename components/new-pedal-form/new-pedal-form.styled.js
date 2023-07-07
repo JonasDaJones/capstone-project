@@ -5,8 +5,6 @@ export const StyledFormContainer = styled.form`
   flex-direction: column;
   max-width: 600px;
   padding: 0.5em;
-  align-content: left;
-  align-items: left;
 `;
 
 export const StyledLabel = styled.label`

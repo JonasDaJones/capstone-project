@@ -15,11 +15,11 @@ const TagInput = ({ onSaveTag, onCancel }) => {
       setTagInput("");
     }
   };
-  const handleChildCancel = (event) => {
+  /*   const handleChildCancel = (event) => {
     event.preventDefault();
     onCancel();
   };
-
+ */
   return (
     <div>
       <input
@@ -30,7 +30,7 @@ const TagInput = ({ onSaveTag, onCancel }) => {
       />
       <button onClick={handleAddTag}>add</button>
       <StyledTagView
-        onCancel={handleChildCancel}
+        onCancel={onCancel}
         addedTags={addedTags}
         setAddedTags={setAddedTags}
       >
