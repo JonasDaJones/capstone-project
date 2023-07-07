@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { StyledCategoryView } from "./category-input.styled";
 
-export default function CategoryInput({
-  FxCategories,
-  onSelectCategory,
-  onCancel,
-}) {
+export default function CategoryInput({ FxCategories, onSelectCategory }) {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   const handleCategoryChange = (event) => {
@@ -37,13 +33,8 @@ export default function CategoryInput({
           </label>
         ))}
       </details>
-      <StyledCategoryView
-        //onCancel={onCancel}
-        selectedCategories={selectedCategories}
-        setSelectedCategories={setSelectedCategories}
-      >
-        {selectedCategories.join(", ")}
-      </StyledCategoryView>
+
+      <StyledCategoryView>{selectedCategories.join(", ")}</StyledCategoryView>
     </div>
   );
 }

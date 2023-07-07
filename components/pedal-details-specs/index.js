@@ -31,7 +31,9 @@ export default function PedalSpecs({ pedalData }) {
       <StyledPolarity>{pedalData.polarity}</StyledPolarity>
 
       <StyledCurrentDraw>
-        <caption>current draw (mA)</caption>
+        <th scope="row"></th>
+        <th scope="row">current draw</th>
+        <th scope="row">(mA)</th>
         <tr>
           <th scope="col">measured by:</th>
           <th scope="col">bypassed</th>

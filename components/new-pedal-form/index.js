@@ -108,7 +108,6 @@ export default function NewPedalForm() {
         id="category"
         FxCategories={FxCategories}
         onSelectCategory={handleCategorySelect}
-        onCancel={handleCancel}
         required
       />
       <StyledDimensionsWrapper>
@@ -144,7 +143,7 @@ export default function NewPedalForm() {
         </StyledDimension>
       </StyledDimensionsWrapper>
       <StyledLabel htmlFor="tags">tags:</StyledLabel>
-      <TagInput id="tags" onSaveTag={handleTagSave} onCancel={handleCancel} />
+      <TagInput id="tags" onSaveTag={handleTagSave} tags={tags} />
       <StyledButtonContainer>
         <button type="reset">Cancel</button>
         <button type="submit">Submit</button>
