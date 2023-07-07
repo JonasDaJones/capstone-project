@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyledTagView } from "./tag-input.styled";
 
-const TagInput = ({ onSaveTag }) => {
+const TagInput = ({ onSaveTag, onCancel }) => {
   const [tagInput, setTagInput] = useState("");
   const [addedTags, setAddedTags] = useState([]);
   const handleTagInputChange = (event) => {
@@ -15,6 +15,10 @@ const TagInput = ({ onSaveTag }) => {
       setTagInput("");
     }
   };
+  const handleChildCancel = (event) => {
+    event.preventDefault();
+    onCancel();
+  };
 
   return (
     <div>
@@ -25,9 +29,14 @@ const TagInput = ({ onSaveTag }) => {
         placeholder="you can tag here"
       />
       <button onClick={handleAddTag}>add</button>
-      <StyledTagView>Tags: {addedTags.join(", ")}</StyledTagView>
+      <StyledTagView
+        onCancel={handleChildCancel}
+        addedTags={addedTags}
+        setAddedTags={setAddedTags}
+      >
+        Tags: {addedTags.join(", ")}
+      </StyledTagView>
     </div>
   );
 };
-
 export default TagInput;

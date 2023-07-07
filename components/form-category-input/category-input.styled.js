@@ -6,5 +6,6 @@ export const StyledCategoryView = styled.div`
   > * {
     color: whitesmoke;
     font-weight: bold;
+    position: relative;
   }
 `;

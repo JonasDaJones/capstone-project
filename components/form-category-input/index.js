@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { StyledCategoryView } from "./category-input.styled";
-export default function CategoryInput({ FxCategories }) {
+
+export default function CategoryInput({
+  FxCategories,
+  onSelectCategory,
+  onCancel,
+}) {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   const handleCategoryChange = (event) => {
@@ -12,6 +17,7 @@ export default function CategoryInput({ FxCategories }) {
         prevSelected.filter((category) => category !== value)
       );
     }
+    onSelectCategory(selectedCategories);
   };
 
   return (
@@ -25,12 +31,19 @@ export default function CategoryInput({ FxCategories }) {
               value={category}
               checked={selectedCategories.includes(category)}
               onChange={handleCategoryChange}
+              onCancel={onCancel}
             />
             {category}
           </label>
         ))}
       </details>
-      <StyledCategoryView>{selectedCategories.join(", ")}</StyledCategoryView>
+      <StyledCategoryView
+        onCancel={onCancel}
+        selectedCategories={selectedCategories}
+        setSelectedCategories={setSelectedCategories}
+      >
+        {selectedCategories.join(", ")}
+      </StyledCategoryView>
     </div>
   );
 }

@@ -28,23 +28,13 @@ export default function NewPedalForm() {
     setTags([...tags, tag]);
   };
 
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
+  const handleCategorySelect = (selectedCategories) => {
+    setSelectedCategory(selectedCategories);
   };
 
   const handleCancel = (event) => {
-    if (event) {
-      event.target.reset();
-    }
-    setName("");
-    setManufacturer("");
-    setMadeIn("");
-    setWidth(0);
-    setDepth(0);
-    setHeight(0);
-    setStereo(0);
-    setTags([]);
-    setSelectedCategory("");
+    event.preventDefault();
+    event.target.reset();
   };
 
   const handleSubmit = (event) => {
@@ -110,6 +100,7 @@ export default function NewPedalForm() {
         id="category"
         FxCategories={FxCategories}
         onSelectCategory={handleCategorySelect}
+        onCancel={handleCancel}
         required
       />
       <StyledDimensionsWrapper>
@@ -145,7 +136,7 @@ export default function NewPedalForm() {
         </StyledDimension>
       </StyledDimensionsWrapper>
       <StyledLabel htmlFor="tags">tags:</StyledLabel>
-      <TagInput id="tags" onSaveTag={handleTagSave} />
+      <TagInput id="tags" onSaveTag={handleTagSave} onCancel={handleCancel} />
       <StyledButtonContainer>
         <button type="reset">Cancel</button>
         <button type="submit">Submit</button>
