@@ -12,11 +12,11 @@ import {
   StyledCommentField,
   StyledCommentLegend,
   StyledContentMain,
-  StyledLegend,
   StyledMono,
   StyledPedalManufacturerDetail,
   StyledTipp,
   StyledTippField,
+  StyledTippLegend,
 } from "./pedal-main.styled";
 export default function PedalMainPage({ pedalData }) {
   return (
@@ -31,11 +31,10 @@ export default function PedalMainPage({ pedalData }) {
       </CategoryWrapper>
       <StyledMono>{pedalData.mono_stereo}</StyledMono>
       <StyledBypass>{pedalData.bypass} bypass</StyledBypass>
-      <StyledTippField>
-        <StyledLegend>nice to know</StyledLegend>
-        <StyledTipp>{pedalData.nice_to_know}</StyledTipp>
-        grid-area: comment;
-      </StyledTippField>
+      <StyledCommentField>
+        <StyledCommentLegend>my comment</StyledCommentLegend>
+        <StyledComment>{pedalData.my_comment}</StyledComment>
+      </StyledCommentField>
       <ImageWrapper>
         <Image
           src={pedalData.imagePath}
@@ -44,10 +43,10 @@ export default function PedalMainPage({ pedalData }) {
           height={200}
         />
       </ImageWrapper>
-      <StyledCommentField>
-        <StyledLegend>my comment</StyledLegend>
-        <StyledComment>{pedalData.my_comment}</StyledComment>
-      </StyledCommentField>
+      <StyledTippField>
+        <StyledTippLegend>nice to know</StyledTippLegend>
+        <StyledTipp>{pedalData.nice_to_know}</StyledTipp>
+      </StyledTippField>
       <TagContainer>
         {pedalData.tags.map((tag, index) => (
           <Tag key={index}>{tag}</Tag>

@@ -17,12 +17,12 @@ export default function NewPedalForm() {
   const [name, setName] = useState("");
   const [manufacturer, setManufacturer] = useState("");
   const [madeIn, setMadeIn] = useState("");
-  const [width, setWidth] = useState(0);
-  const [depth, setDepth] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState("");
+  const [depth, setDepth] = useState("");
+  const [height, setHeight] = useState("");
   const [stereo, setStereo] = useState(false);
   const [tags, setTags] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState([]);
 
   const handleTagSave = (tag) => {
     setTags([...tags, tag]);
@@ -33,8 +33,10 @@ export default function NewPedalForm() {
   };
 
   const handleCancel = (event) => {
-    event.target.reset();
-    /* setName("");
+    if (event) {
+      event.target.reset();
+    }
+    setName("");
     setManufacturer("");
     setMadeIn("");
     setWidth(0);
@@ -42,7 +44,7 @@ export default function NewPedalForm() {
     setHeight(0);
     setStereo(0);
     setTags([]);
-    setSelectedCategory(""); */
+    setSelectedCategory("");
   };
 
   const handleSubmit = (event) => {
@@ -93,7 +95,6 @@ export default function NewPedalForm() {
         id="madeIn"
         value={madeIn}
         onChange={(event) => setMadeIn(event.target.value)}
-        required
       />
       <StyledStereoWrapper>
         <StyledLabel htmlFor="stereo">stereo?</StyledLabel>
@@ -109,6 +110,7 @@ export default function NewPedalForm() {
         id="category"
         FxCategories={FxCategories}
         onSelectCategory={handleCategorySelect}
+        required
       />
       <StyledDimensionsWrapper>
         <StyledDimension>
@@ -117,8 +119,8 @@ export default function NewPedalForm() {
             type="number"
             id="width"
             value={width}
+            min="0"
             onChange={(event) => setWidth(Number(event.target.value))}
-            required
           />
         </StyledDimension>
         <StyledDimension>
@@ -127,8 +129,8 @@ export default function NewPedalForm() {
             type="number"
             id="depth"
             value={depth}
+            min="0"
             onChange={(event) => setDepth(Number(event.target.value))}
-            required
           />
         </StyledDimension>
         <StyledDimension>
@@ -137,12 +139,11 @@ export default function NewPedalForm() {
             type="number"
             id="height"
             value={height}
+            min="0"
             onChange={(event) => setHeight(Number(event.target.value))}
-            required
           />
         </StyledDimension>
       </StyledDimensionsWrapper>
-
       <StyledLabel htmlFor="tags">tags:</StyledLabel>
       <TagInput id="tags" onSaveTag={handleTagSave} />
       <StyledButtonContainer>

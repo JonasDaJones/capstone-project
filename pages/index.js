@@ -8,7 +8,6 @@ export default function HomePage() {
     <div>
       <MainHead>My Sound Journal</MainHead>
       <PedalGallery />
-      <Link href="/new-pedal">Add a Pedal</Link>
     </div>
   );
 }
