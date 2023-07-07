@@ -33,8 +33,16 @@ export default function NewPedalForm() {
   };
 
   const handleCancel = (event) => {
-    event.preventDefault();
     event.target.reset();
+    setName("");
+    setManufacturer("");
+    setMadeIn("");
+    setWidth(0);
+    setDepth(0);
+    setHeight(0);
+    setStereo(0);
+    setTags([]);
+    setSelectedCategory([]);
   };
 
   const handleSubmit = (event) => {
