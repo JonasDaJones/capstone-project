@@ -1,10 +1,10 @@
 import { useState } from "react";
 import TagInput from "../form-tag-input";
-import CategoryInput from "../form-category-input";
 import { FxCategories } from "../../lib/fx-categories";
 import { v4 as uuidv4 } from "uuid";
 import {
   StyledButtonContainer,
+  StyledCategoryView,
   StyledDimension,
   StyledDimensionsWrapper,
   StyledFormContainer,
@@ -28,19 +28,25 @@ export default function NewPedalForm() {
     setTags([...tags, tag]);
   };
 
-  const handleCategorySelect = (selectedCategories) => {
-    setSelectedCategory(selectedCategories);
+  const handleCategoryChange = (event) => {
+    const { value, checked } = event.target;
+    if (checked) {
+      setSelectedCategory((prevSelected) => [...prevSelected, value]);
+    } else {
+      setSelectedCategory((prevSelected) =>
+        prevSelected.filter((category) => category !== value)
+      );
+    }
   };
 
-  const handleCancel = (event) => {
-    event.target.reset();
+  const handleReset = () => {
     setName("");
     setManufacturer("");
     setMadeIn("");
-    setWidth(0);
-    setDepth(0);
-    setHeight(0);
-    setStereo(0);
+    setWidth("");
+    setDepth("");
+    setHeight("");
+    setStereo(false);
     setTags([]);
     setSelectedCategory([]);
   };
@@ -62,13 +68,11 @@ export default function NewPedalForm() {
     };
 
     console.log(newPedal);
-    //localStorage.setItem("newPedal", JSON.stringify(newPedal));
-
-    //handleCancel();
+    handleReset();
   };
 
   return (
-    <StyledFormContainer onSubmit={handleSubmit} onReset={handleCancel}>
+    <StyledFormContainer onSubmit={handleSubmit}>
       <StyledLabel htmlFor="name">name:</StyledLabel>
       <StyledInput
         type="text"
@@ -103,13 +107,24 @@ export default function NewPedalForm() {
           onChange={(event) => setStereo(event.target.checked)}
         />
       </StyledStereoWrapper>
-      <StyledLabel htmlFor="category">category:</StyledLabel>
-      <CategoryInput
-        id="category"
-        FxCategories={FxCategories}
-        onSelectCategory={handleCategorySelect}
-        required
-      />
+      <div>
+        <details>
+          <summary>choose categories</summary>
+          {FxCategories.map((category) => (
+            <label key={category}>
+              <input
+                type="checkbox"
+                value={category}
+                checked={selectedCategory.includes(category)}
+                onChange={handleCategoryChange}
+              />
+              {category}
+            </label>
+          ))}
+        </details>
+
+        <StyledCategoryView>{selectedCategory.join(", ")}</StyledCategoryView>
+      </div>
       <StyledDimensionsWrapper>
         <StyledDimension>
           <StyledLabel htmlFor="width">width (mm):</StyledLabel>
@@ -145,7 +160,9 @@ export default function NewPedalForm() {
       <StyledLabel htmlFor="tags">tags:</StyledLabel>
       <TagInput id="tags" onSaveTag={handleTagSave} tags={tags} />
       <StyledButtonContainer>
-        <button type="reset">Cancel</button>
+        <button type="reset" onClick={handleReset}>
+          Cancel
+        </button>
         <button type="submit">Submit</button>
       </StyledButtonContainer>
     </StyledFormContainer>

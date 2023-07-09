@@ -45,3 +45,9 @@ export const StyledDimension = styled.div`
   flex-direction: column;
   width: 28%;
 `;
+
+export const StyledCategoryView = styled.div`
+  width: 100%;
+  height: 3em;
+  border: 2px solid #2490b5;
+`;
