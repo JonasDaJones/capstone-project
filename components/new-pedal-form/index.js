@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { usePedalsFromLocalStorage } from "../../hooks/usePedalsFromLocalStorage";
 import TagInput from "../form-tag-input";
 import { FxCategories } from "../../lib/fx-categories";
 import { v4 as uuidv4 } from "uuid";
@@ -24,8 +23,6 @@ export default function NewPedalForm() {
   const [stereo, setStereo] = useState(false);
   const [tags, setTags] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState([]);
-  const { pedals, savePedals } = usePedalsFromLocalStorage();
-
   const handleTagSave = (tag) => {
     setTags([...tags, tag]);
   };
