@@ -1,4 +1,8 @@
 import { useState } from "react";
+import {
+  savePedalsToLocalStorage,
+  loadPedalsFromLocalStorage,
+} from "../../lib/pedalfx-data";
 import TagInput from "../form-tag-input";
 import { FxCategories } from "../../lib/fx-categories";
 import { v4 as uuidv4 } from "uuid";
@@ -12,7 +16,7 @@ import {
   StyledLabel,
   StyledStereoWrapper,
 } from "./new-pedal-form.styled";
-
+import Link from "next/link";
 export default function NewPedalForm() {
   const [name, setName] = useState("");
   const [manufacturer, setManufacturer] = useState("");
@@ -67,7 +71,10 @@ export default function NewPedalForm() {
       category: selectedCategory,
     };
 
-    console.log(newPedal);
+    let pedals = loadPedalsFromLocalStorage();
+    pedals.push(newPedal);
+    savePedalsToLocalStorage(pedals);
+
     handleReset();
   };
 
@@ -160,6 +167,7 @@ export default function NewPedalForm() {
       <StyledLabel htmlFor="tags">tags:</StyledLabel>
       <TagInput id="tags" onSaveTag={handleTagSave} tags={tags} />
       <StyledButtonContainer>
+        <Link href="/">Home</Link>
         <button type="reset" onClick={handleReset}>
           Cancel
         </button>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PedalManufacturer } from "../pedal-card-preview/pedal-card-preview.styled";
+import { StyledPedalManufacturer } from "../pedal-card-preview/pedal-card-preview.styled";
 export const StyledContentMain = styled.main`
   background-color: whitesmoke;
   padding: 0.5em;
@@ -65,6 +65,6 @@ export const StyledTipp = styled.p`
   border-radius: 15px;
   padding: 1em;
 `;
-export const StyledPedalManufacturerDetail = styled(PedalManufacturer)`
+export const StyledPedalManufacturerDetail = styled(StyledPedalManufacturer)`
   color: black;
 `;

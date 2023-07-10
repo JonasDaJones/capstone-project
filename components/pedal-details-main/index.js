@@ -18,6 +18,7 @@ import {
   StyledTippField,
   StyledTippLegend,
 } from "./pedal-main.styled";
+
 export default function PedalMainPage({ pedalData }) {
   return (
     <StyledContentMain>

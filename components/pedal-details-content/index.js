@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { pedals } from "../../lib/pedalfx-data";
 import PedalMainPage from "../pedal-details-main";
 import PedalSpecs from "../pedal-details-specs";
 import PedalSound from "../pedal-details-sound";
@@ -10,10 +9,10 @@ import {
   StyledPedalTitle,
   StyledTabBar,
   StyledTabButton,
+  StyledWarning,
 } from "./pedal-detail-content.styled";
 import BackButton from "../nav-button";
-export default function PedalDetailContent({ id }) {
-  const pedalData = pedals.find((pedal) => pedal.id === id);
+export default function PedalDetailContent({ pedalData }) {
   const [activeTab, setActiveTab] = useState("main");
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -53,7 +52,7 @@ export default function PedalDetailContent({ id }) {
             {activeTab === "sound" && <PedalSound pedalData={pedalData} />}
           </section>
         ) : (
-          <h3>No pedal found</h3>
+          <StyledWarning>No pedal found</StyledWarning>
         )}
       </StyledContentWrapper>
     </>

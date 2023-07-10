@@ -3,29 +3,34 @@ import Image from "next/image";
 import Link from "next/link";
 
 import {
-  PedalPreview,
-  PedalName,
-  ImageWrapper,
-  CategoryWrapper,
-  PedalManufacturer,
-  TagContainer,
-  Tag,
-  Hint,
+  StyledPedalPreview,
+  StyledPedalName,
+  StyledCategoryWrapper,
+  StyledImageWrapper,
+  StyledHint,
+  StyledPedalManufacturer,
+  StyledTagContainer,
+  StyledTag,
+  StyledCategory,
 } from "./pedal-card-preview.styled";
 
 const PedalCardPreview = ({ pedalData }) => {
   return (
-    <PedalPreview>
-      <PedalName>{pedalData.name}</PedalName>
-      <PedalManufacturer>{pedalData.manufacturer}</PedalManufacturer>
+    <StyledPedalPreview>
+      <StyledPedalName>{pedalData.name}</StyledPedalName>
+      <StyledPedalManufacturer>
+        {pedalData.manufacturer}
+      </StyledPedalManufacturer>
 
-      <CategoryWrapper>
+      <StyledCategoryWrapper>
         {pedalData.category.map((category) => (
-          <p key={category}>{category}</p>
+          <StyledCategory key={category}>
+            <p>{category}</p>
+          </StyledCategory>
         ))}
-      </CategoryWrapper>
-      <ImageWrapper>
-        <Link href={`/detail/${pedalData.id}`}>
+      </StyledCategoryWrapper>
+      <StyledImageWrapper>
+        <Link href={`/detail/${id}`}>
           <Image
             src={pedalData.imagePath}
             alt={pedalData.name}
@@ -33,15 +38,15 @@ const PedalCardPreview = ({ pedalData }) => {
             height={260}
           />
         </Link>
-        <Hint>please click image for details</Hint>
-      </ImageWrapper>
+        <StyledHint>please click image for details</StyledHint>
+      </StyledImageWrapper>
 
-      <TagContainer>
+      <StyledTagContainer>
         {pedalData.tags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
+          <StyledTag key={tag}>{tag}</StyledTag>
         ))}
-      </TagContainer>
-    </PedalPreview>
+      </StyledTagContainer>
+    </StyledPedalPreview>
   );
 };
 
