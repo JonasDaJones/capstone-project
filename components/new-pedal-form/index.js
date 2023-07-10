@@ -110,7 +110,7 @@ export default function NewPedalForm() {
           onChange={(event) => setStereo(event.target.checked)}
         />
       </StyledStereoWrapper>
-      <div>
+      <StyledCategoryView>
         <details>
           <summary>choose categories</summary>
           {FxCategories.map((category) => (
@@ -127,7 +127,7 @@ export default function NewPedalForm() {
         </details>
 
         <StyledCategoryView>{selectedCategory.join(", ")}</StyledCategoryView>
-      </div>
+      </StyledCategoryView>
       <StyledDimensionsWrapper>
         <StyledDimension>
           <StyledLabel htmlFor="width">width (mm):</StyledLabel>
