@@ -30,7 +30,7 @@ const PedalCardPreview = ({ pedalData }) => {
         ))}
       </StyledCategoryWrapper>
       <StyledImageWrapper>
-        <Link href={`/detail/${id}`}>
+        <Link href={`/detail/${pedalData.id}`}>
           <Image
             src={pedalData.imagePath}
             alt={pedalData.name}

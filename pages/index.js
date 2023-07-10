@@ -1,10 +1,13 @@
 import React from "react";
 import PedalGallery from "../components/pedal-gallery/index";
 import styled from "styled-components";
-import { usePedalsFromLocalStorage } from "../hooks/usePedalsFromLocalStorage";
+import { pedals as mockPedals } from "../lib/pedalfx-data";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function HomePage() {
-  const { pedals, savePedals } = usePedalsFromLocalStorage();
+  const [pedals, setPedals] = useLocalStorageState("pedals", {
+    defaultValue: mockPedals,
+  });
   return (
     <div>
       <MainHead>My Sound Journal</MainHead>
