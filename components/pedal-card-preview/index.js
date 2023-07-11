@@ -14,26 +14,24 @@ import {
   StyledCategory,
 } from "./pedal-card-preview.styled";
 
-const PedalCardPreview = ({ pedalData }) => {
+const PedalCardPreview = ({ pedal }) => {
   return (
     <StyledPedalPreview>
-      <StyledPedalName>{pedalData.name}</StyledPedalName>
-      <StyledPedalManufacturer>
-        {pedalData.manufacturer}
-      </StyledPedalManufacturer>
+      <StyledPedalName>{pedal.name}</StyledPedalName>
+      <StyledPedalManufacturer>{pedal.manufacturer}</StyledPedalManufacturer>
 
       <StyledCategoryWrapper>
-        {pedalData.category.map((category) => (
+        {pedal.category.map((category) => (
           <StyledCategory key={category}>
             <p>{category}</p>
           </StyledCategory>
         ))}
       </StyledCategoryWrapper>
       <StyledImageWrapper>
-        <Link href={`/detail/${pedalData.id}`}>
+        <Link href={`/detail/${pedal.id}`}>
           <Image
-            src={pedalData.imagePath}
-            alt={pedalData.name}
+            src={pedal.imagePath}
+            alt={pedal.name}
             width={200}
             height={260}
           />
@@ -42,7 +40,7 @@ const PedalCardPreview = ({ pedalData }) => {
       </StyledImageWrapper>
 
       <StyledTagContainer>
-        {pedalData.tags.map((tag) => (
+        {pedal.tags.map((tag) => (
           <StyledTag key={tag}>{tag}</StyledTag>
         ))}
       </StyledTagContainer>

@@ -16,19 +16,19 @@ import {
   StyledJackFrontList,
 } from "./pedal-details-specs.styled";
 
-export default function PedalSpecs({ pedalData }) {
+export default function PedalSpecs({ currentPedal }) {
   return (
     <StyledContentSpecs>
       <StyledDimensions>
         <h4>dimensions (mm)</h4>
-        <p>width: {pedalData.width_mm}</p>
-        <p>depth: {pedalData.depth_mm}</p>
-        <p>height: {pedalData.height_mm}</p>
+        <p>width: {currentPedal.width_mm}</p>
+        <p>depth: {currentPedal.depth_mm}</p>
+        <p>height: {currentPedal.height_mm}</p>
       </StyledDimensions>
 
-      <StyledVoltage>voltage: {pedalData.voltage}</StyledVoltage>
-      <StyledBattery>battery: {pedalData.battery}</StyledBattery>
-      <StyledPolarity>{pedalData.polarity}</StyledPolarity>
+      <StyledVoltage>voltage: {currentPedal.voltage}</StyledVoltage>
+      <StyledBattery>battery: {currentPedal.battery}</StyledBattery>
+      <StyledPolarity>{currentPedal.polarity}</StyledPolarity>
 
       <StyledCurrentDraw>
         <th scope="row"></th>
@@ -41,64 +41,64 @@ export default function PedalSpecs({ pedalData }) {
         </tr>
         <tr>
           <th scope="row">manufacturer</th>
-          <td>{pedalData.bypass_current_draw_manufacturer}</td>
-          <td>{pedalData.engaged_current_draw_manufacturer}</td>
+          <td>{currentPedal.bypass_current_draw_manufacturer}</td>
+          <td>{currentPedal.engaged_current_draw_manufacturer}</td>
         </tr>
         <tr>
           <th scope="row">me</th>
-          <td>{pedalData.bypass_current_draw_own_measurement}</td>
-          <td>{pedalData.engaged_current_draw_own_measurement}</td>
+          <td>{currentPedal.bypass_current_draw_own_measurement}</td>
+          <td>{currentPedal.engaged_current_draw_own_measurement}</td>
         </tr>
       </StyledCurrentDraw>
       <StyledImpedance>
-        impedance in/out: {pedalData.input_impedance}/{" "}
-        {pedalData.output_impedance}
+        impedance in/out: {currentPedal.input_impedance}/{" "}
+        {currentPedal.output_impedance}
       </StyledImpedance>
       <StyledFootswitchList>
         <caption>footswitches</caption>
-        {pedalData.footswitches.map((footswitch) => (
+        {currentPedal.footswitches.map((footswitch) => (
           <li key={footswitch}>{footswitch}</li>
         ))}
       </StyledFootswitchList>
       <StyledKnobList>
         <caption>knobs</caption>
-        {pedalData.knobs.map((knob) => (
+        {currentPedal.knobs.map((knob) => (
           <li key={knob}>{knob}</li>
         ))}
       </StyledKnobList>
       <StyledSwitchList>
         <caption>switches</caption>
-        {pedalData.switches.map((haehswitch) => (
+        {currentPedal.switches.map((haehswitch) => (
           <li key={haehswitch}>{haehswitch}</li>
         ))}
       </StyledSwitchList>
       <StyledDipswitchList>
         <caption>dipswitches</caption>
-        {pedalData.dipswitches.map((dipswitch) => (
+        {currentPedal.dipswitches.map((dipswitch) => (
           <li key={dipswitch}>{dipswitch}</li>
         ))}
       </StyledDipswitchList>
       <StyledJackLeftList>
         <caption>jacks left</caption>
-        {pedalData.jacks_left.map((jack_left) => (
+        {currentPedal.jacks_left.map((jack_left) => (
           <li key={jack_left}>{jack_left}</li>
         ))}
       </StyledJackLeftList>
       <StyledJackRightList>
         <caption>jacks right</caption>
-        {pedalData.jacks_right.map((jack_right) => (
+        {currentPedal.jacks_right.map((jack_right) => (
           <li key={jack_right}>{jack_right}</li>
         ))}
       </StyledJackRightList>
       <StyledJackTopList>
         <caption>jacks top</caption>
-        {pedalData.jacks_top.map((jack_top) => (
+        {currentPedal.jacks_top.map((jack_top) => (
           <li key={jack_top}>{jack_top}</li>
         ))}
       </StyledJackTopList>
       <StyledJackFrontList>
         <caption>jacks front</caption>
-        {pedalData.jacks_front.map((jack_front) => (
+        {currentPedal.jacks_front.map((jack_front) => (
           <li key={jack_front}>{jack_front}</li>
         ))}
       </StyledJackFrontList>

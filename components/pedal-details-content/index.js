@@ -12,10 +12,12 @@ import {
   StyledWarning,
 } from "./pedal-detail-content.styled";
 import BackButton from "../nav-button";
+
 export default function PedalDetailContent({ pedalData }) {
   const [activeTab, setActiveTab] = useState("main");
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+    console.log(pedalData);
   };
   return (
     <>

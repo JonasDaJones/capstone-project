@@ -13,7 +13,7 @@ import {
   StyledStereoWrapper,
 } from "./new-pedal-form.styled";
 import Link from "next/link";
-export default function NewPedalForm() {
+export default function NewPedalForm(setPedals) {
   const [name, setName] = useState("");
   const [manufacturer, setManufacturer] = useState("");
   const [madeIn, setMadeIn] = useState("");
@@ -67,7 +67,7 @@ export default function NewPedalForm() {
     };
 
     const updatedPedals = [...pedals, newPedal];
-    savePedals(updatedPedals);
+    setPedals(updatedPedals);
     handleReset();
   };
 
