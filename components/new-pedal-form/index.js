@@ -4,6 +4,7 @@ import { FxCategories } from "../../lib/fx-categories";
 import { v4 as uuidv4 } from "uuid";
 import {
   StyledButtonContainer,
+  StyledCategoryFieldset,
   StyledCategoryInput,
   StyledCategoryView,
   StyledDimension,
@@ -14,7 +15,7 @@ import {
   StyledStereoWrapper,
 } from "./new-pedal-form.styled";
 import Link from "next/link";
-export default function NewPedalForm(setPedals) {
+export default function NewPedalForm({ pedals, handlePedalSubmit }) {
   const [name, setName] = useState("");
   const [manufacturer, setManufacturer] = useState("");
   const [madeIn, setMadeIn] = useState("");
@@ -50,25 +51,17 @@ export default function NewPedalForm(setPedals) {
     setTags([]);
     setSelectedCategory([]);
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
     const newPedal = {
       id: uuidv4(),
-      name: name,
-      manufacturer: manufacturer,
-      madeIn: madeIn,
-      width: width,
-      depth: depth,
-      height: height,
-      stereo: stereo,
-      tags: tags,
-      category: selectedCategory,
+      ...data,
     };
 
     const updatedPedals = [...pedals, newPedal];
-    setPedals(updatedPedals);
+    handlePedalSubmit(updatedPedals);
     handleReset();
   };
 
@@ -76,6 +69,7 @@ export default function NewPedalForm(setPedals) {
     <StyledFormContainer onSubmit={handleSubmit}>
       <StyledLabel htmlFor="name">name:</StyledLabel>
       <StyledInput
+        name="name"
         type="text"
         id="name"
         value={name}
@@ -85,6 +79,7 @@ export default function NewPedalForm(setPedals) {
 
       <StyledLabel htmlFor="manufacturer">manufacturer:</StyledLabel>
       <StyledInput
+        name="manufacturer"
         type="text"
         id="manufacturer"
         value={manufacturer}
@@ -94,6 +89,7 @@ export default function NewPedalForm(setPedals) {
 
       <StyledLabel htmlFor="madeIn">made in:</StyledLabel>
       <StyledInput
+        name="madeIn"
         type="text"
         id="madeIn"
         value={madeIn}
@@ -102,34 +98,38 @@ export default function NewPedalForm(setPedals) {
       <StyledStereoWrapper>
         <StyledLabel htmlFor="stereo">stereo?</StyledLabel>
         <StyledInput
+          name="stereo"
           type="checkbox"
           id="stereo"
           checked={stereo}
           onChange={(event) => setStereo(event.target.checked)}
         />
       </StyledStereoWrapper>
-      <details>
-        <summary>choose categories</summary>
-        <StyledCategoryInput>
-          {FxCategories.map((category) => (
-            <label key={category}>
-              <input
-                type="checkbox"
-                value={category}
-                checked={selectedCategory.includes(category)}
-                onChange={handleCategoryChange}
-              />
-              {category}
-            </label>
-          ))}
-        </StyledCategoryInput>
-      </details>
-
-      <StyledCategoryView>{selectedCategory.join(", ")}</StyledCategoryView>
+      <StyledCategoryFieldset>
+        <details>
+          <summary>choose categories</summary>
+          <StyledCategoryInput>
+            {FxCategories.map((category) => (
+              <label key={category}>
+                <input
+                  name="category"
+                  type="checkbox"
+                  value={category}
+                  checked={selectedCategory.includes(category)}
+                  onChange={handleCategoryChange}
+                />
+                {category}
+              </label>
+            ))}
+          </StyledCategoryInput>
+        </details>
+        <StyledCategoryView>{selectedCategory.join(", ")}</StyledCategoryView>
+      </StyledCategoryFieldset>
       <StyledDimensionsWrapper>
         <StyledDimension>
           <StyledLabel htmlFor="width">width (mm):</StyledLabel>
           <input
+            name="width"
             type="number"
             id="width"
             value={width}
@@ -140,6 +140,7 @@ export default function NewPedalForm(setPedals) {
         <StyledDimension>
           <StyledLabel htmlFor="depth">depth (mm):</StyledLabel>
           <input
+            name="depth"
             type="number"
             id="depth"
             value={depth}
@@ -150,6 +151,7 @@ export default function NewPedalForm(setPedals) {
         <StyledDimension>
           <StyledLabel htmlFor="height">height (mm):</StyledLabel>
           <input
+            name="height"
             type="number"
             id="height"
             value={height}
@@ -159,7 +161,7 @@ export default function NewPedalForm(setPedals) {
         </StyledDimension>
       </StyledDimensionsWrapper>
       <StyledLabel htmlFor="tags">tags:</StyledLabel>
-      <TagInput id="tags" onSaveTag={handleTagSave} tags={tags} />
+      <TagInput name="tags" id="tags" onSaveTag={handleTagSave} tags={tags} />
       <StyledButtonContainer>
         <Link href="/">Home</Link>
         <button type="reset" onClick={handleReset}>

@@ -1,13 +1,13 @@
 import React from "react";
 import NewPedalForm from "../components/new-pedal-form";
 
-export default function AddPedal(pedals, setPedals) {
+export default function AddPedal({ pedals, handlePedalSubmit }) {
   return (
     <>
       <header>
-        <h1>New Pedal \o/</h1>
+        <h1>New Pedal 🤩</h1>
       </header>
-      <NewPedalForm pedals={pedals} setPedals={setPedals} />
+      <NewPedalForm pedals={pedals} handlePedalSubmit={handlePedalSubmit} />
     </>
   );
 }

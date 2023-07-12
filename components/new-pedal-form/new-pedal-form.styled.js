@@ -46,6 +46,11 @@ export const StyledDimension = styled.div`
   width: 28%;
 `;
 
+export const StyledCategoryFieldset = styled.fieldset`
+  border: 2px solid #2490b5;
+  border-radius: 5px;
+`;
+
 export const StyledCategoryInput = styled.div`
   width: 100%;
   display: flex;
@@ -54,7 +59,7 @@ export const StyledCategoryInput = styled.div`
 `;
 
 export const StyledCategoryView = styled.div`
+  border-top: 1em;
   width: 100%;
   height: 3em;
-  border: 2px solid #2490b5;
 `;

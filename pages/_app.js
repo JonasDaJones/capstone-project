@@ -6,10 +6,17 @@ export default function App({ Component, pageProps }) {
   const [pedals, setPedals] = useLocalStorageState("pedals", {
     defaultValue: mockPedals,
   });
+  const handlePedalSubmit = (updatedPedals) => {
+    setPedals(updatedPedals);
+  };
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} pedals={pedals} setPedals={setPedals} />
+      <Component
+        {...pageProps}
+        pedals={pedals}
+        handlePedalSubmit={handlePedalSubmit}
+      />
     </>
   );
 }
