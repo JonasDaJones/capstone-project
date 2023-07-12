@@ -25,8 +25,10 @@ const TagInput = ({ onSaveTag, tags }) => {
         placeholder="you can tag here"
       />
       <button onClick={handleAddTag}>add</button>
-      <StyledTagView addedTags={addedTags} **setAddedTags={setAddedTags}**>
-        Tags: {tags.join(", ")}
+
+      <StyledTagView addedTags={addedTags} setAddedTags={setAddedTags}>
+        {" "}
+        Tags: {addedTags.join(", ")}
       </StyledTagView>
     </div>
   );
