@@ -13,17 +13,17 @@ import {
 } from "./pedal-detail-content.styled";
 import BackButton from "../nav-button";
 
-export default function PedalDetailContent({ pedalData }) {
+export default function PedalDetailContent({ currentPedal }) {
   const [activeTab, setActiveTab] = useState("main");
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    console.log(pedalData);
   };
+
   return (
     <>
       <StyledHead>
         <BackButton />
-        <StyledPedalTitle>{pedalData?.name}</StyledPedalTitle>
+        <StyledPedalTitle>{currentPedal?.name}</StyledPedalTitle>
         <StyledHamburger>🍔</StyledHamburger>
         <StyledTabBar>
           <StyledTabButton
@@ -47,11 +47,17 @@ export default function PedalDetailContent({ pedalData }) {
         </StyledTabBar>
       </StyledHead>
       <StyledContentWrapper>
-        {pedalData ? (
+        {currentPedal ? (
           <section>
-            {activeTab === "main" && <PedalMainPage pedalData={pedalData} />}
-            {activeTab === "specs" && <PedalSpecs pedalData={pedalData} />}
-            {activeTab === "sound" && <PedalSound pedalData={pedalData} />}
+            {activeTab === "main" && (
+              <PedalMainPage currentPedal={currentPedal} />
+            )}
+            {activeTab === "specs" && (
+              <PedalSpecs currentPedal={currentPedal} />
+            )}
+            {activeTab === "sound" && (
+              <PedalSound currentPedal={currentPedal} />
+            )}
           </section>
         ) : (
           <StyledWarning>No pedal found</StyledWarning>

@@ -20,7 +20,6 @@ import {
 } from "./pedal-main.styled";
 
 export default function PedalMainPage({ currentPedal }) {
-  console.log(currentPedal);
   return (
     <StyledContentMain>
       <StyledPedalManufacturerDetail>
