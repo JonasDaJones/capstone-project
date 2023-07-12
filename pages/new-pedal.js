@@ -7,7 +7,7 @@ export default function AddPedal({ pedals, handlePedalSubmit }) {
       <header>
         <h1>New Pedal 🤩</h1>
       </header>
-      <NewPedalForm pedals={pedals} handlePedalSubmit={handlePedalSubmit} />
+      <NewPedalForm pedals={pedals} onHandlePedalSubmit={handlePedalSubmit} />
     </>
   );
 }
