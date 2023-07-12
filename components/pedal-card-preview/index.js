@@ -15,13 +15,19 @@ import {
 } from "./pedal-card-preview.styled";
 
 const PedalCardPreview = ({ pedal }) => {
+  const categories =
+    pedal.category && Array.isArray(pedal.category) ? pedal.category : [];
+  const tagArray = Array.isArray(pedal.tags)
+    ? pedal.category
+    : [pedal.category];
+
   return (
     <StyledPedalPreview>
       <StyledPedalName>{pedal.name}</StyledPedalName>
       <StyledPedalManufacturer>{pedal.manufacturer}</StyledPedalManufacturer>
 
       <StyledCategoryWrapper>
-        {pedal.category.map((category) => (
+        {categories.map((category) => (
           <StyledCategory key={category}>
             <p>{category}</p>
           </StyledCategory>
@@ -40,7 +46,7 @@ const PedalCardPreview = ({ pedal }) => {
       </StyledImageWrapper>
 
       <StyledTagContainer>
-        {pedal.tags.map((tag) => (
+        {tagArray.map((tag) => (
           <StyledTag key={tag}>{tag}</StyledTag>
         ))}
       </StyledTagContainer>

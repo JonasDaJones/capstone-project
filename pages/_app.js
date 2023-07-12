@@ -6,8 +6,15 @@ export default function App({ Component, pageProps }) {
   const [pedals, setPedals] = useLocalStorageState("pedals", {
     defaultValue: mockPedals,
   });
+
   const handlePedalSubmit = (updatedPedals) => {
-    setPedals(updatedPedals);
+    const pedalsWithCategories = updatedPedals.map((pedal) => ({
+      ...pedal,
+      category: Array.isArray(pedal.category)
+        ? pedal.category
+        : [pedal.category],
+    }));
+    setPedals(pedalsWithCategories);
   };
   return (
     <>
