@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import {
-  CategoryWrapper,
-  ImageWrapper,
-  Tag,
-  TagContainer,
+  StyledCategoryWrapper,
+  StyledImageWrapper,
+  StyledTag,
+  StyledTagContainer,
 } from "../pedal-card-preview/pedal-card-preview.styled";
 import {
   StyledBypass,
@@ -25,34 +25,34 @@ export default function PedalMainPage({ currentPedal }) {
       <StyledPedalManufacturerDetail>
         {currentPedal.manufacturer}, {currentPedal.made_in}
       </StyledPedalManufacturerDetail>
-      <CategoryWrapper>
+      <StyledCategoryWrapper>
         {currentPedal.category.map((category) => (
           <p key={category}>{category}</p>
         ))}
-      </CategoryWrapper>
+      </StyledCategoryWrapper>
       <StyledMono>{currentPedal.mono_stereo}</StyledMono>
       <StyledBypass>{currentPedal.bypass} bypass</StyledBypass>
       <StyledCommentField>
         <StyledCommentLegend>my comment</StyledCommentLegend>
         <StyledComment>{currentPedal.my_comment}</StyledComment>
       </StyledCommentField>
-      <ImageWrapper>
+      <StyledImageWrapper>
         <Image
           src={currentPedal.imagePath}
           alt={currentPedal.name}
           width={150}
           height={200}
         />
-      </ImageWrapper>
+      </StyledImageWrapper>
       <StyledTippField>
         <StyledTippLegend>nice to know</StyledTippLegend>
         <StyledTipp>{currentPedal.nice_to_know}</StyledTipp>
       </StyledTippField>
-      <TagContainer>
+      <StyledTagContainer>
         {currentPedal.tags.map((tag, index) => (
-          <Tag key={index}>{tag}</Tag>
+          <StyledTag key={index}>{tag}</StyledTag>
         ))}
-      </TagContainer>
+      </StyledTagContainer>
     </StyledContentMain>
   );
 }

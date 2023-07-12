@@ -46,6 +46,13 @@ export const StyledDimension = styled.div`
   width: 28%;
 `;
 
+export const StyledCategoryInput = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1em;
+`;
+
 export const StyledCategoryView = styled.div`
   width: 100%;
   height: 3em;

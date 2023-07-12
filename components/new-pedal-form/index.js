@@ -4,6 +4,7 @@ import { FxCategories } from "../../lib/fx-categories";
 import { v4 as uuidv4 } from "uuid";
 import {
   StyledButtonContainer,
+  StyledCategoryInput,
   StyledCategoryView,
   StyledDimension,
   StyledDimensionsWrapper,
@@ -107,9 +108,9 @@ export default function NewPedalForm(setPedals) {
           onChange={(event) => setStereo(event.target.checked)}
         />
       </StyledStereoWrapper>
-      <StyledCategoryView>
-        <details>
-          <summary>choose categories</summary>
+      <details>
+        <summary>choose categories</summary>
+        <StyledCategoryInput>
           {FxCategories.map((category) => (
             <label key={category}>
               <input
@@ -121,10 +122,10 @@ export default function NewPedalForm(setPedals) {
               {category}
             </label>
           ))}
-        </details>
+        </StyledCategoryInput>
+      </details>
 
-        <StyledCategoryView>{selectedCategory.join(", ")}</StyledCategoryView>
-      </StyledCategoryView>
+      <StyledCategoryView>{selectedCategory.join(", ")}</StyledCategoryView>
       <StyledDimensionsWrapper>
         <StyledDimension>
           <StyledLabel htmlFor="width">width (mm):</StyledLabel>
