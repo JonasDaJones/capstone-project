@@ -17,9 +17,7 @@ import {
 const PedalCardPreview = ({ pedal }) => {
   const categories =
     pedal.category && Array.isArray(pedal.category) ? pedal.category : [];
-  const tagArray = Array.isArray(pedal.tags)
-    ? pedal.category
-    : [pedal.category];
+  const tagArray = Array.isArray(pedal.tags) ? pedal.tags : [pedal.tags];
 
   return (
     <StyledPedalPreview>
