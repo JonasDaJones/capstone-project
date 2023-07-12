@@ -26,9 +26,7 @@ const PedalCardPreview = ({ pedal }) => {
 
       <StyledCategoryWrapper>
         {categories.map((category) => (
-          <StyledCategory key={category}>
-            <p>{category}</p>
-          </StyledCategory>
+          <StyledCategory key={category}>{category}</StyledCategory>
         ))}
       </StyledCategoryWrapper>
       <StyledImageWrapper>

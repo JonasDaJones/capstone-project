@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }) {
     defaultValue: mockPedals,
   });
 
-  const handlePedalSubmit = (updatedPedals) => {
+  const onHandlePedalSubmit = (updatedPedals) => {
     const pedalsWithCategories = updatedPedals.map((pedal) => ({
       ...pedal,
       category: Array.isArray(pedal.category)
@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }) {
       <Component
         {...pageProps}
         pedals={pedals}
-        handlePedalSubmit={handlePedalSubmit}
+        onHandlePedalSubmit={onHandlePedalSubmit}
       />
     </>
   );

@@ -27,7 +27,7 @@ export default function PedalMainPage({ currentPedal }) {
       </StyledPedalManufacturerDetail>
       <StyledCategoryWrapper>
         {currentPedal.category.map((category) => (
-          <p key={category}>{category}</p>
+          <li key={category}>{category}</li>
         ))}
       </StyledCategoryWrapper>
       <StyledMono>{currentPedal.mono_stereo}</StyledMono>

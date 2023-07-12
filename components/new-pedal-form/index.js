@@ -15,7 +15,7 @@ import {
   StyledStereoWrapper,
 } from "./new-pedal-form.styled";
 import Link from "next/link";
-export default function NewPedalForm({ pedals, handlePedalSubmit }) {
+export default function NewPedalForm({ pedals, onHandlePedalSubmit }) {
   const [name, setName] = useState("");
   const [manufacturer, setManufacturer] = useState("");
   const [madeIn, setMadeIn] = useState("");
@@ -61,7 +61,7 @@ export default function NewPedalForm({ pedals, handlePedalSubmit }) {
     };
 
     const updatedPedals = [...pedals, newPedal];
-    handlePedalSubmit(updatedPedals);
+    onHandlePedalSubmit(updatedPedals);
     handleReset();
   };
 
