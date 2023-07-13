@@ -3,45 +3,50 @@ import Image from "next/image";
 import Link from "next/link";
 
 import {
-  PedalPreview,
-  PedalName,
-  ImageWrapper,
-  CategoryWrapper,
-  PedalManufacturer,
-  TagContainer,
-  Tag,
-  Hint,
+  StyledPedalPreview,
+  StyledPedalName,
+  StyledCategoryWrapper,
+  StyledImageWrapper,
+  StyledHint,
+  StyledPedalManufacturer,
+  StyledTagContainer,
+  StyledTag,
+  StyledCategory,
 } from "./pedal-card-preview.styled";
 
-const PedalCardPreview = ({ pedalData }) => {
-  return (
-    <PedalPreview>
-      <PedalName>{pedalData.name}</PedalName>
-      <PedalManufacturer>{pedalData.manufacturer}</PedalManufacturer>
+const PedalCardPreview = ({ pedal }) => {
+  const categories =
+    pedal.category && Array.isArray(pedal.category) ? pedal.category : [];
+  const tagArray = Array.isArray(pedal.tags) ? pedal.tags : [pedal.tags];
 
-      <CategoryWrapper>
-        {pedalData.category.map((category) => (
-          <p key={category}>{category}</p>
+  return (
+    <StyledPedalPreview>
+      <StyledPedalName>{pedal.name}</StyledPedalName>
+      <StyledPedalManufacturer>{pedal.manufacturer}</StyledPedalManufacturer>
+
+      <StyledCategoryWrapper>
+        {categories.map((category) => (
+          <StyledCategory key={category}>{category}</StyledCategory>
         ))}
-      </CategoryWrapper>
-      <ImageWrapper>
-        <Link href={`/detail/${pedalData.id}`}>
+      </StyledCategoryWrapper>
+      <StyledImageWrapper>
+        <Link href={`/detail/${pedal.id}`}>
           <Image
-            src={pedalData.imagePath}
-            alt={pedalData.name}
+            src={pedal.imagePath}
+            alt={pedal.name}
             width={200}
             height={260}
           />
         </Link>
-        <Hint>please click image for details</Hint>
-      </ImageWrapper>
+        <StyledHint>please click image for details</StyledHint>
+      </StyledImageWrapper>
 
-      <TagContainer>
-        {pedalData.tags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
+      <StyledTagContainer>
+        {tagArray.map((tag) => (
+          <StyledTag key={tag}>{tag}</StyledTag>
         ))}
-      </TagContainer>
-    </PedalPreview>
+      </StyledTagContainer>
+    </StyledPedalPreview>
   );
 };
 

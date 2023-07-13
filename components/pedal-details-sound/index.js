@@ -3,11 +3,11 @@ import {
   StyledDetailSound,
   StyledSoundDescription,
 } from "./pedal-details-sound.styled";
-export default function PedalSound({ pedalData }) {
+export default function PedalSound({ currentPedal }) {
   return (
     <StyledDetailSound>
       <StyledSoundDescription>
-        sound description: {pedalData.sound_description}
+        sound description: {currentPedal.sound_description}
       </StyledSoundDescription>
     </StyledDetailSound>
   );

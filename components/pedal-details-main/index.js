@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import {
-  CategoryWrapper,
-  ImageWrapper,
-  Tag,
-  TagContainer,
+  StyledCategoryWrapper,
+  StyledImageWrapper,
+  StyledTag,
+  StyledTagContainer,
 } from "../pedal-card-preview/pedal-card-preview.styled";
 import {
   StyledBypass,
@@ -12,47 +12,47 @@ import {
   StyledCommentField,
   StyledCommentLegend,
   StyledContentMain,
-  StyledLegend,
   StyledMono,
   StyledPedalManufacturerDetail,
   StyledTipp,
   StyledTippField,
+  StyledTippLegend,
 } from "./pedal-main.styled";
-export default function PedalMainPage({ pedalData }) {
+
+export default function PedalMainPage({ currentPedal }) {
   return (
     <StyledContentMain>
       <StyledPedalManufacturerDetail>
-        {pedalData.manufacturer}, {pedalData.made_in}
+        {currentPedal.manufacturer}, {currentPedal.made_in}
       </StyledPedalManufacturerDetail>
-      <CategoryWrapper>
-        {pedalData.category.map((category) => (
-          <p key={category}>{category}</p>
+      <StyledCategoryWrapper>
+        {currentPedal.category.map((category) => (
+          <li key={category}>{category}</li>
         ))}
-      </CategoryWrapper>
-      <StyledMono>{pedalData.mono_stereo}</StyledMono>
-      <StyledBypass>{pedalData.bypass} bypass</StyledBypass>
-      <StyledTippField>
-        <StyledLegend>nice to know</StyledLegend>
-        <StyledTipp>{pedalData.nice_to_know}</StyledTipp>
-        grid-area: comment;
-      </StyledTippField>
-      <ImageWrapper>
+      </StyledCategoryWrapper>
+      <StyledMono>{currentPedal.mono_stereo}</StyledMono>
+      <StyledBypass>{currentPedal.bypass} bypass</StyledBypass>
+      <StyledCommentField>
+        <StyledCommentLegend>my comment</StyledCommentLegend>
+        <StyledComment>{currentPedal.my_comment}</StyledComment>
+      </StyledCommentField>
+      <StyledImageWrapper>
         <Image
-          src={pedalData.imagePath}
-          alt={pedalData.name}
+          src={currentPedal.imagePath}
+          alt={currentPedal.name}
           width={150}
           height={200}
         />
-      </ImageWrapper>
-      <StyledCommentField>
-        <StyledLegend>my comment</StyledLegend>
-        <StyledComment>{pedalData.my_comment}</StyledComment>
-      </StyledCommentField>
-      <TagContainer>
-        {pedalData.tags.map((tag, index) => (
-          <Tag key={index}>{tag}</Tag>
+      </StyledImageWrapper>
+      <StyledTippField>
+        <StyledTippLegend>nice to know</StyledTippLegend>
+        <StyledTipp>{currentPedal.nice_to_know}</StyledTipp>
+      </StyledTippField>
+      <StyledTagContainer>
+        {currentPedal.tags.map((tag, index) => (
+          <StyledTag key={index}>{tag}</StyledTag>
         ))}
-      </TagContainer>
+      </StyledTagContainer>
     </StyledContentMain>
   );
 }

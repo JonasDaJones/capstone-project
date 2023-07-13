@@ -37,3 +37,9 @@ export const StyledContentWrapper = styled.section`
   background-color: #706470;
   padding: 0 0.5rem;
 `;
+
+export const StyledWarning = styled.h3`
+  font-size: 4rem;
+  color: #b52490;
+  margin: 3rem auto;
+`;

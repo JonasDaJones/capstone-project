@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PedalPreview = styled.div`
+export const StyledPedalPreview = styled.div`
   background-color: #706470;
   width: 80%;
   max-width: 350px;
@@ -16,20 +16,20 @@ export const PedalPreview = styled.div`
   border-radius: 3px;
 `;
 
-export const PedalName = styled.h3`
+export const StyledPedalName = styled.h3`
   grid-area: name;
   margin: 3px;
   padding: 1px;
   color: whitesmoke;
 `;
 
-export const PedalManufacturer = styled.p`
+export const StyledPedalManufacturer = styled.p`
   grid-area: manufacturer;
   font-weight: bold;
   color: whitesmoke;
 `;
 
-export const ImageWrapper = styled.figure`
+export const StyledImageWrapper = styled.figure`
   grid-area: image;
   justify-self: center;
   position: relative;
@@ -39,7 +39,7 @@ export const ImageWrapper = styled.figure`
   }
 `;
 
-export const Hint = styled.figcaption`
+export const StyledHint = styled.figcaption`
   width: 100%;
   text-align: center;
   position: absolute;
@@ -48,7 +48,8 @@ export const Hint = styled.figcaption`
   background-color: rgba(0, 0, 0, 0.7);
 `;
 
-export const CategoryWrapper = styled.div`
+export const StyledCategoryWrapper = styled.ul`
+  list-style: none;
   grid-area: category;
   display: flex;
   flex-direction: row-reverse;
@@ -56,20 +57,22 @@ export const CategoryWrapper = styled.div`
   padding: 0;
   margin-bottom: 1em;
   background-color: transparent;
-
-  > * {
-    justify-content: flex-end;
-    height: fit-content;
-    width: fit-content;
-    padding: 1px 0.5em;
-    margin: 0.3em 0 0 0;
-    border-radius: 25px;
-    background-color: #b52490;
-    color: whitesmoke;
-  }
+  z-index: 2;
 `;
 
-export const TagContainer = styled.div`
+export const StyledCategory = styled.li`
+  justify-content: flex-end;
+  height: fit-content;
+  width: fit-content;
+  padding: 1px 0.5em;
+  margin: 0.3em 0 0 0.5em;
+  border-radius: 25px;
+  background-color: #b52490;
+  color: whitesmoke;
+`;
+
+export const StyledTagContainer = styled.ul`
+  list-style: none;
   grid-area: tags;
   align-self: flex-end;
   background-color: transparent;
@@ -84,7 +87,7 @@ export const TagContainer = styled.div`
   height: fit-content;
 `;
 
-export const Tag = styled.span`
+export const StyledTag = styled.li`
   width: fit-content;
   padding: 2px 2px;
   margin: 0.2em;

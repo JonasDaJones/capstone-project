@@ -3,9 +3,8 @@ import styled from "styled-components";
 export const StyledFormContainer = styled.form`
   display: flex;
   flex-direction: column;
+  max-width: 600px;
   padding: 0.5em;
-  align-content: left;
-  align-items: left;
 `;
 
 export const StyledLabel = styled.label`
@@ -45,4 +44,22 @@ export const StyledDimension = styled.div`
   display: flex;
   flex-direction: column;
   width: 28%;
+`;
+
+export const StyledCategoryFieldset = styled.fieldset`
+  border: 2px solid #2490b5;
+  border-radius: 5px;
+`;
+
+export const StyledCategoryInput = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1em;
+`;
+
+export const StyledCategoryView = styled.div`
+  border-top: 1em;
+  width: 100%;
+  height: 3em;
 `;
