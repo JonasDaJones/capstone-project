@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TagInput from "../form-tag-input";
+import AddImage from "../image-upload";
 import { FxCategories } from "../../lib/fx-categories";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -25,6 +26,7 @@ export default function NewPedalForm({ pedals, onHandlePedalSubmit }) {
   const [stereo, setStereo] = useState(false);
   const [tags, setTags] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState([]);
+  const [currentImage, setCurrentImage] = useState("");
   const handleTagSave = (tag) => {
     setTags([...tags, tag]);
   };
@@ -50,6 +52,7 @@ export default function NewPedalForm({ pedals, onHandlePedalSubmit }) {
     setStereo(false);
     setTags([]);
     setSelectedCategory([]);
+    setCurrentImage("");
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -169,6 +172,7 @@ export default function NewPedalForm({ pedals, onHandlePedalSubmit }) {
         </button>
         <button type="submit">Submit</button>
       </StyledButtonContainer>
+      <AddImage />
     </StyledFormContainer>
   );
 }
