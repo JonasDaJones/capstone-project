@@ -1,37 +1,23 @@
 import process from "node:process";
+
 import cloudinary from "cloudinary";
 import formidable from "formidable";
-
+// formidable does not work with the default api settings o Next.js, so we disable the bodyParser via config
 export const config = {
   api: {
     bodyParser: false,
   },
 };
-
+// set the cloudinary config to use your environment variables
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_SECRET,
 });
 
-export default async function handler(request, response) {
-  if (request.method === "GET") {
-    try {
-      // we use cloudinary search API to retrieve images
-      const result = await cloudinary.v2.search
-        // see documentation to adjust the query at https://cloudinary.com/documentation/search_api#examples
-        .with_field("tags")
-        .max_results(10)
-        .execute();
-      // finally we deliver the response with the result as JSON
-      response.status(200).json(result);
-    } catch (error) {
-      response.status(500).json({ message: error.message });
-    }
-  }
-}
-
-export async function postHandler(req, res) {
+// define our async handler function - simplified :)
+export default async function handler(req, res) {
+  // we check for POST, all other methods return 405
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -50,8 +36,9 @@ export async function postHandler(req, res) {
     // call our cloudinary uploader with the required arguments
     const result = await cloudinary.v2.uploader.upload(filepath, {
       public_id: newFilename,
+      // OPTIONAL: if you want to add tags for your file, add another input field to your form and pass the values here like e.g.
     });
-
+    console.log("API: response from cloudinary: ", result);
     // return our just uploaded image result from cloudinary upload
     return res.status(201).json(result);
   });

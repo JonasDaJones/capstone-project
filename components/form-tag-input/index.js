@@ -26,9 +26,12 @@ const TagInput = ({ onSaveTag, tags }) => {
       />
       <button onClick={handleAddTag}>add</button>
 
-      <StyledTagView addedTags={addedTags} setAddedTags={setAddedTags}>
-        {" "}
-        Tags: {addedTags.join(", ")}
+      <StyledTagView
+        addedTags={addedTags}
+        setAddedTags={setAddedTags}
+        tags={tags}
+      >
+        Tags: {addedTags.join(", ")}{" "}
       </StyledTagView>
     </div>
   );
