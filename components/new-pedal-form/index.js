@@ -1,7 +1,5 @@
 import { useState } from "react";
 import TagInput from "../form-tag-input";
-import AddImage from "../image-upload";
-import ImageUploadForm from "../image-upload-form";
 import { FxCategories } from "../../lib/fx-categories";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -17,12 +15,13 @@ import {
   StyledStereoWrapper,
 } from "./new-pedal-form.styled";
 import Link from "next/link";
+import UploadedImage from "../UploadedImage";
 export default function NewPedalForm({
   pedals,
   onHandlePedalSubmit,
   onNameChange,
-  tagView,
-  setTagView,
+  imagePath,
+  onImagePathChange,
 }) {
   const [name, setName] = useState("");
   const [manufacturer, setManufacturer] = useState("");
@@ -36,8 +35,6 @@ export default function NewPedalForm({
   const handleTagSave = (tag) => {
     setTags([...tags, tag]);
   };
-  const [imagePath, setImagePath] = useState("");
-  const [file, setFile] = useState(null);
 
   const handleCategoryChange = (event) => {
     const { value, checked } = event.target;
@@ -60,8 +57,6 @@ export default function NewPedalForm({
     setStereo(false);
     setTags([]);
     setSelectedCategory([]);
-    setImagePath("");
-    setFile(null);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -77,41 +72,9 @@ export default function NewPedalForm({
     onHandlePedalSubmit(updatedPedals);
     handleReset();
   };
-  // const handleImageUpload = async (file) => {
-  //   console.log(file);
-  //   const formData = new FormData();
-  //   formData.append("file", file);
-  //   try {
-  //     const response = await postHandler(formData);
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       const imageUrl = data.url;
-  //       console.log(imageUrl);
-  //       setImagePath(imageUrl);
-  //     } else {
-  //     }
-  //   } catch (error) {}
-  // };
-
-  async function handleImageUpload(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event);
-    console.log(formData);
-    try {
-      const response = await fetch("/api/upload", {
-        method: "post",
-        body: formData,
-      });
-      if (response.status === 201) {
-        console.log(response);
-        //mutate();
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
+  const handleImagePathChange = (newImagePath) => {
+    onImagePathChange(newImagePath);
+  };
   return (
     <StyledFormContainer onSubmit={handleSubmit}>
       <StyledLabel htmlFor="name">name:</StyledLabel>
@@ -212,13 +175,13 @@ export default function NewPedalForm({
       </StyledDimensionsWrapper>
       <StyledLabel htmlFor="tags">tags:</StyledLabel>
       <TagInput name="tags" id="tags" onSaveTag={handleTagSave} tags={tags} />
-      <div>
-        <ImageUploadForm
-          onImageUpload={handleImageUpload}
-          onFileChange={setFile}
-          file={file}
-        />
-      </div>
+
+      <Link href="/image-upload">upload image</Link>
+
+      <UploadedImage
+        imagePath={imagePath}
+        onImagePathChange={handleImagePathChange}
+      />
 
       <StyledButtonContainer>
         <Link href="/">Home</Link>
