@@ -3,14 +3,9 @@ import NewPedalForm from "../components/new-pedal-form";
 
 export default function AddPedal({ pedals, onHandlePedalSubmit }) {
   const [name, setName] = useState("");
-  const [imagePath, setImagePath] = useState("");
 
   const handleNameChange = (event) => {
     setName(event.target.value);
-  };
-
-  const handleImagePathChange = (newImagePath) => {
-    setImagePath(newImagePath);
   };
 
   return (
@@ -22,8 +17,6 @@ export default function AddPedal({ pedals, onHandlePedalSubmit }) {
         pedals={pedals}
         onHandlePedalSubmit={onHandlePedalSubmit}
         onNameChange={handleNameChange}
-        imagePath={imagePath}
-        onImagePathChange={handleImagePathChange}
       />
     </>
   );

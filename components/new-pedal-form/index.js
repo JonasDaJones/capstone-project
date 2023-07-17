@@ -2,6 +2,8 @@ import { useState } from "react";
 import TagInput from "../form-tag-input";
 import { FxCategories } from "../../lib/fx-categories";
 import { v4 as uuidv4 } from "uuid";
+import useSWR from "swr";
+import Image from "next/image";
 import {
   StyledButtonContainer,
   StyledCategoryFieldset,
@@ -15,13 +17,10 @@ import {
   StyledStereoWrapper,
 } from "./new-pedal-form.styled";
 import Link from "next/link";
-import UploadedImage from "../UploadedImage";
 export default function NewPedalForm({
   pedals,
   onHandlePedalSubmit,
   onNameChange,
-  imagePath,
-  onImagePathChange,
 }) {
   const [name, setName] = useState("");
   const [manufacturer, setManufacturer] = useState("");
@@ -32,6 +31,12 @@ export default function NewPedalForm({
   const [stereo, setStereo] = useState(false);
   const [tags, setTags] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState([]);
+  const { data, error } = useSWR("/api/images");
+
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+
+  const latestImage = data.resources[0];
   const handleTagSave = (tag) => {
     setTags([...tags, tag]);
   };
@@ -65,16 +70,14 @@ export default function NewPedalForm({
     const newPedal = {
       id: uuidv4(),
       ...data,
-      imagePath: imagePath,
+      imagePath: latestImage.url,
     };
 
     const updatedPedals = [...pedals, newPedal];
     onHandlePedalSubmit(updatedPedals);
     handleReset();
   };
-  const handleImagePathChange = (newImagePath) => {
-    onImagePathChange(newImagePath);
-  };
+
   return (
     <StyledFormContainer onSubmit={handleSubmit}>
       <StyledLabel htmlFor="name">name:</StyledLabel>
@@ -178,9 +181,13 @@ export default function NewPedalForm({
 
       <Link href="/image-upload">upload image</Link>
 
-      <UploadedImage
-        imagePath={imagePath}
-        onImagePathChange={handleImagePathChange}
+      <Image
+        src={latestImage.url}
+        width={150}
+        height={150}
+        object-fit="cover"
+        style={{ borderRadius: "0.5rem", borderColor: "black" }}
+        alt={`Image-Id: ${latestImage.public_id}`}
       />
 
       <StyledButtonContainer>
