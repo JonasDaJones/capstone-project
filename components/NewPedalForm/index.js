@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
@@ -22,6 +23,7 @@ import {
   StyledCategoryLabel,
   StyledCategoryView,
   StyledFormContainer,
+  StyledFormFigure,
   StyledFormNavigation,
   StyledFormPage,
   StyledFormSection,
@@ -38,26 +40,31 @@ export default function NewPedalForm({
   onFormChange,
   onReset,
 }) {
-  const [pedalName, setPedalName] = useState("");
-  const [manufacturer, setManufacturer] = useState("");
-  const [madeIn, setMadeIn] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState([]);
-  const [width, setWidth] = useState(0);
-  const [depth, setDepth] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [tags, setTags] = useState("");
-
   const [pageIndex, setPageIndex] = useState(0);
+  const [showImage, setShowImage] = useState(false);
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setShowImage(true);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
   const { data, error } = useSWR("/api/images");
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   const latestImage = data.resources[0];
+
   const handleInputChange = (event) => {
-    const { pedalName, value } = event.target;
-    onFormChange(pedalName, value);
+    const { name, value } = event.target;
+    onFormChange(name, value);
   };
   const handleTagSave = (tag) => {
     setTags([...tags, tag]);
+    onFormChange("tags", [...tags, tag]);
   };
   const handleCategoryChange = (event) => {
     const { value, checked } = event.target;
@@ -68,20 +75,36 @@ export default function NewPedalForm({
         prevSelected.filter((category) => category !== value)
       );
     }
+    onFormChange("selectedCategory", selectedCategory);
   };
-  const handleStereoChange = (event) => {
-    const { stereo, value } = event.target;
-    onFormChange(stereo, value);
+  const handleStereoChange = (isChecked) => {
+    setStereo(isChecked);
+    onFormChange("stereo", isChecked);
   };
-  const handleBypassChange = (event) => {
-    const {
-      target: { name, value },
-    } = event;
-    onFormChange(bypass, value);
+  const handleWidthChange = (event) => {
+    const { value } = event.target;
+    setWidth(Number(value));
+    onFormChange("width", value);
+  };
+
+  const handleDepthChange = (event) => {
+    const { value } = event.target;
+    setDepth(Number(value));
+    onFormChange("depth", value);
+  };
+
+  const handleHeightChange = (event) => {
+    const { value } = event.target;
+    setHeight(Number(value));
+    onFormChange("height", value);
+  };
+  const handleBypassChange = (value) => {
+    setBypass(value);
+    onFormChange("bypass", value);
   };
   const handleVoltageChange = (event) => {
-    const { voltage, value } = event.target;
-    onFormChange(voltage, value);
+    const { name, value } = event.target;
+    onFormChange(name, value);
   };
   const handleBatteryChange = (event) => {
     const { battery, value } = event.target;
@@ -115,7 +138,29 @@ export default function NewPedalForm({
     const { engagedCurrentDrawOwnMeasurement, value } = event.target;
     onFormChange(engagedCurrentDrawOwnMeasurement, value);
   };
-  const handleReset = onReset;
+  const handleFormReset = () => {
+    setPedalName("");
+    setManufacturer("");
+    setMadeIn("");
+    setWidth("");
+    setDepth("");
+    setHeight("");
+    setStereo(false);
+    setTags([]);
+    setSelectedCategory([]);
+    setBypass("");
+    setVoltage("");
+    setBattery("");
+    setPolarity("");
+    setInputImpedance("");
+    setOutputImpedance("");
+    setBypassCurrentDrawManufacturer(0);
+    setEngagedCurrentDrawManufacturer(0);
+    setBypassCurrentDrawOwnMeasurement(0);
+    setEngagedCurrentDrawOwnMeasurement(0);
+    setShowImage(false);
+    onReset();
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -127,7 +172,7 @@ export default function NewPedalForm({
 
     const updatedPedals = [...pedals, newPedal];
     onHandlePedalSubmit(updatedPedals);
-    handleReset();
+    handleFormReset();
   };
 
   // as the form is very long, it is split into pages
@@ -147,10 +192,9 @@ export default function NewPedalForm({
             <TextInput
               label="name"
               name="name"
-              value={pedalName}
+              value={formData.pedalName}
               onChange={(event) => {
                 setPedalName(event.target.value);
-                onNameChange(event);
                 onFormChange("name", event.target.value);
               }}
               required
@@ -158,7 +202,7 @@ export default function NewPedalForm({
             <TextInput
               label="manufacturer"
               name="manufacturer"
-              value={manufacturer}
+              value={formData.manufacturer}
               onChange={(event) => {
                 setManufacturer(event.target.value);
                 onFormChange("manufacturer", event.target.value);
@@ -168,18 +212,13 @@ export default function NewPedalForm({
             <TextInput
               label="made in"
               name="madeIn"
-              value={madeIn}
+              value={formData.madeIn}
               onChange={(event) => {
                 setMadeIn(event.target.value);
                 onFormChange("madeIn", event.target.value);
               }}
             />
-            <StereoInput
-              onStereoChange={(newStereo) => {
-                handleStereoChange(newStereo);
-                onFormChange("stereo", newStereo);
-              }}
-            />
+            <StereoInput onStereoChange={handleStereoChange} />
 
             {/* category input is not in component due to state issues */}
             <StyledInputWrapper>
@@ -193,8 +232,8 @@ export default function NewPedalForm({
                           id={category}
                           name="category"
                           type="checkbox"
-                          value={category}
-                          checked={selectedCategory.includes(category)}
+                          value={formData.category}
+                          checked={formData.selectedCategory.includes(category)}
                           onChange={handleCategoryChange}
                         />
                         {category}
@@ -204,7 +243,7 @@ export default function NewPedalForm({
                 </details>
 
                 <StyledCategoryView>
-                  {selectedCategory.join(", ")}
+                  {formData.selectedCategory.join(", ")}
                 </StyledCategoryView>
               </StyledCategoryContainer>
             </StyledInputWrapper>
@@ -213,37 +252,31 @@ export default function NewPedalForm({
               width={width}
               depth={depth}
               height={height}
-              onWidthChange={(event) => {
-                setWidth(Number(event.target.value));
-                onFormChange("width", event.target.value);
-              }}
-              onDepthChange={(event) => {
-                setDepth(Number(event.target.value));
-                onFormChange("depth", event.target.value);
-              }}
-              onHeightChange={(event) => {
-                setHeight(Number(event.target.value));
-                onFormChange("height", event.target.value);
-              }}
+              onWidthChange={handleWidthChange}
+              onDepthChange={handleDepthChange}
+              onHeightChange={handleHeightChange}
             />
             <InputList
               name="tags"
               id="tags"
-              inputs={tags}
+              value={formData.tags}
               onSaveInput={handleTagSave}
               placeholder={tags}
               onFormChange={onFormChange}
             />
 
             <Link href="/image-upload">upload image</Link>
-            <Image
-              src={latestImage.url}
-              width={100}
-              height={100}
-              object-fit="cover"
-              style={{ borderRadius: "0.5rem", borderColor: "black" }}
-              alt={`Image-Id: ${latestImage.public_id}`}
-            />
+            <StyledFormFigure>
+              {showImage && (
+                <Image
+                  src={latestImage.url}
+                  fill={true}
+                  object-fit="cover"
+                  style={{ borderRadius: "0.5rem", borderColor: "black" }}
+                  alt={`Image-Id: ${latestImage.public_id}`}
+                />
+              )}
+            </StyledFormFigure>
             <StyledFormNavigation>
               <button type="button" onClick={nextPage}>
                 next
@@ -307,6 +340,9 @@ export default function NewPedalForm({
               </button>
               <StyledSubmitButton type="submit">Submit</StyledSubmitButton>
             </StyledFormNavigation>
+            <StyledCancelButton type="reset" onClick={handleFormReset}>
+              Cancel
+            </StyledCancelButton>
           </StyledFormSection>
         );
 
@@ -319,7 +355,7 @@ export default function NewPedalForm({
     <StyledFormContainer onSubmit={handleSubmit}>
       {renderFormContent()}
 
-      <StyledCancelButton type="reset" onClick={handleReset}>
+      <StyledCancelButton type="reset" onClick={handleFormReset}>
         Cancel
       </StyledCancelButton>
     </StyledFormContainer>

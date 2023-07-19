@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { StyledStereoWrapper } from "./FormStereoInput.styled";
 export default function StereoInput({ onStereoChange }) {
-  const [checkedStereo, setCheckedStereo] = useState(false);
   const handleStereoChange = (event) => {
-    const newStereo = event.target.checked;
-    setCheckedStereo(newStereo);
-    onStereoChange(newStereo);
+    const isChecked = event.target.checked;
+    onStereoChange(isChecked);
   };
 
   return (
@@ -16,8 +14,6 @@ export default function StereoInput({ onStereoChange }) {
         id="stereo"
         type="checkbox"
         name="stereo"
-        value={false}
-        checked={checkedStereo}
         onChange={handleStereoChange}
       />
     </StyledStereoWrapper>

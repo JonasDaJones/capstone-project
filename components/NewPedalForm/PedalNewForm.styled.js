@@ -26,6 +26,12 @@ export const StyledSelect = styled.select`
   padding: 0.5em;
   border: solid 1px #2490b5;
 `;
+
+export const StyledFormFigure = styled.figure`
+  position: relative;
+  width: 60px;
+  height: 90px;
+`;
 export const StyledCancelButton = styled.button`
   background-color: #b52490;
   color: whitesmoke;

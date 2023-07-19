@@ -4,7 +4,6 @@ import PedalSpecs from "../pedal-details-specs";
 import PedalSound from "../pedal-details-sound";
 import {
   StyledContentWrapper,
-  StyledHamburger,
   StyledHead,
   StyledPedalTitle,
   StyledTabBar,
@@ -23,8 +22,8 @@ export default function PedalDetailContent({ currentPedal }) {
     <>
       <StyledHead>
         <BackButton />
-        <StyledPedalTitle>{currentPedal?.name}</StyledPedalTitle>
-        <StyledHamburger>🍔</StyledHamburger>
+        <StyledPedalTitle>{currentPedal?.pedalName}</StyledPedalTitle>
+
         <StyledTabBar>
           <StyledTabButton
             active={activeTab === "main"}

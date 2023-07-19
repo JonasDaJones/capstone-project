@@ -1,9 +1,10 @@
 import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 import NewPedalForm from "../components/NewPedalForm";
 
 export default function AddPedal({ pedals, onHandlePedalSubmit }) {
   const [pedalName, setPedalName] = useState("");
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useLocalStorageState({
     pedalName: "",
     manufacturer: "",
     madeIn: "",
@@ -29,7 +30,7 @@ export default function AddPedal({ pedals, onHandlePedalSubmit }) {
     setPedalName(event.target.value);
   };
 
-  const handleFormChange = (key, value) => {
+  const onHandleFormChange = (key, value) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [key]: value,
@@ -39,6 +40,7 @@ export default function AddPedal({ pedals, onHandlePedalSubmit }) {
   const handleReset = () => {
     setPedalName("");
     setFormData({
+      pedallName: "",
       manufacturer: "",
       madeIn: "",
       width: "",
@@ -70,7 +72,7 @@ export default function AddPedal({ pedals, onHandlePedalSubmit }) {
         formData={formData}
         onHandlePedalSubmit={onHandlePedalSubmit}
         onNameChange={handlePedalNameChange}
-        onFormChange={handleFormChange}
+        onFormChange={onHandleFormChange}
         onReset={handleReset}
       />
     </>

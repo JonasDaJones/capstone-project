@@ -21,7 +21,7 @@ const PedalCardPreview = ({ pedal }) => {
 
   return (
     <StyledPedalPreview>
-      <StyledPedalName>{pedal.name}</StyledPedalName>
+      <StyledPedalName>{pedal.pedalName}</StyledPedalName>
       <StyledPedalManufacturer>{pedal.manufacturer}</StyledPedalManufacturer>
 
       <StyledCategoryWrapper>
@@ -33,7 +33,7 @@ const PedalCardPreview = ({ pedal }) => {
         <Link href={`/detail/${pedal.id}`}>
           <Image
             src={pedal.imagePath}
-            alt={pedal.name}
+            alt={pedal.pedalName}
             width={200}
             height={260}
           />
