@@ -7,7 +7,7 @@ export default function PedalSound({ currentPedal }) {
   return (
     <StyledDetailSound>
       <StyledSoundDescription>
-        sound description: {currentPedal.sound_description}
+        sound description: {currentPedal.soundDescription}
       </StyledSoundDescription>
     </StyledDetailSound>
   );

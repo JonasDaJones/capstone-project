@@ -23,30 +23,30 @@ export default function PedalMainPage({ currentPedal }) {
   return (
     <StyledContentMain>
       <StyledPedalManufacturerDetail>
-        {currentPedal.manufacturer}, {currentPedal.made_in}
+        {currentPedal.manufacturer}, {currentPedal.madeIn}
       </StyledPedalManufacturerDetail>
       <StyledCategoryWrapper>
         {currentPedal.category.map((category) => (
           <li key={category}>{category}</li>
         ))}
       </StyledCategoryWrapper>
-      <StyledMono>{currentPedal.mono_stereo}</StyledMono>
+      <StyledMono>{currentPedal.stereo}</StyledMono>
       <StyledBypass>{currentPedal.bypass} bypass</StyledBypass>
       <StyledCommentField>
         <StyledCommentLegend>my comment</StyledCommentLegend>
-        <StyledComment>{currentPedal.my_comment}</StyledComment>
+        <StyledComment>{currentPedal.myComment}</StyledComment>
       </StyledCommentField>
       <StyledImageWrapper>
         <Image
           src={currentPedal.imagePath}
-          alt={currentPedal.name}
+          alt={currentPedal.PedalName}
           width={150}
           height={200}
         />
       </StyledImageWrapper>
       <StyledTippField>
         <StyledTippLegend>nice to know</StyledTippLegend>
-        <StyledTipp>{currentPedal.nice_to_know}</StyledTipp>
+        <StyledTipp>{currentPedal.niceToKnow}</StyledTipp>
       </StyledTippField>
       <StyledTagContainer>
         {currentPedal.tags.map((tag, index) => (

@@ -21,9 +21,9 @@ export default function PedalSpecs({ currentPedal }) {
     <StyledContentSpecs>
       <StyledDimensions>
         <h4>dimensions (mm)</h4>
-        <p>width: {currentPedal.width_mm}</p>
-        <p>depth: {currentPedal.depth_mm}</p>
-        <p>height: {currentPedal.height_mm}</p>
+        <p>width: {currentPedal.width}</p>
+        <p>depth: {currentPedal.depth}</p>
+        <p>height: {currentPedal.height}</p>
       </StyledDimensions>
 
       <StyledVoltage>voltage: {currentPedal.voltage}</StyledVoltage>
@@ -41,18 +41,18 @@ export default function PedalSpecs({ currentPedal }) {
         </tr>
         <tr>
           <th scope="row">manufacturer</th>
-          <td>{currentPedal.bypass_current_draw_manufacturer}</td>
-          <td>{currentPedal.engaged_current_draw_manufacturer}</td>
+          <td>{currentPedal.bypassCurrentDrawManufacturer}</td>
+          <td>{currentPedal.engagedCurrentDrawManufacturer}</td>
         </tr>
         <tr>
           <th scope="row">me</th>
-          <td>{currentPedal.bypass_current_draw_own_measurement}</td>
-          <td>{currentPedal.engaged_current_draw_own_measurement}</td>
+          <td>{currentPedal.bypassCurrentDrawOwnMeasurement}</td>
+          <td>{currentPedal.engagedCurrentDrawOwnMeasurement}</td>
         </tr>
       </StyledCurrentDraw>
       <StyledImpedance>
-        impedance in/out: {currentPedal.input_impedance}/{" "}
-        {currentPedal.output_impedance}
+        impedance in/out: {currentPedal.inputImpedance}/{" "}
+        {currentPedal.outputImpedance}
       </StyledImpedance>
       <StyledFootswitchList>
         <caption>footswitches</caption>
@@ -80,26 +80,26 @@ export default function PedalSpecs({ currentPedal }) {
       </StyledDipswitchList>
       <StyledJackLeftList>
         <caption>jacks left</caption>
-        {currentPedal.jacks_left.map((jack_left) => (
-          <li key={jack_left}>{jack_left}</li>
+        {currentPedal.jacksLeft.map((jackLeft) => (
+          <li key={jackLeft}>{jackLeft}</li>
         ))}
       </StyledJackLeftList>
       <StyledJackRightList>
         <caption>jacks right</caption>
-        {currentPedal.jacks_right.map((jack_right) => (
-          <li key={jack_right}>{jack_right}</li>
+        {currentPedal.jacksRight.map((jackRight) => (
+          <li key={jackRight}>{jackRight}</li>
         ))}
       </StyledJackRightList>
       <StyledJackTopList>
         <caption>jacks top</caption>
-        {currentPedal.jacks_top.map((jack_top) => (
-          <li key={jack_top}>{jack_top}</li>
+        {currentPedal.jacksTop.map((jackTop) => (
+          <li key={jackTop}>{jackTop}</li>
         ))}
       </StyledJackTopList>
       <StyledJackFrontList>
         <caption>jacks front</caption>
-        {currentPedal.jacks_front.map((jack_front) => (
-          <li key={jack_front}>{jack_front}</li>
+        {currentPedal.jacksFront.map((jackFront) => (
+          <li key={jackFront}>{jackFront}</li>
         ))}
       </StyledJackFrontList>
     </StyledContentSpecs>
