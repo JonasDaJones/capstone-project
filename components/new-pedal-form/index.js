@@ -141,41 +141,8 @@ export default function NewPedalForm({
         </details>
         <StyledCategoryView>{selectedCategory.join(", ")}</StyledCategoryView>
       </StyledCategoryFieldset>
-      <StyledDimensionsWrapper>
-        <StyledDimension>
-          <StyledLabel htmlFor="width">width (mm):</StyledLabel>
-          <input
-            name="width"
-            type="number"
-            id="width"
-            value={width}
-            min="0"
-            onChange={(event) => setWidth(Number(event.target.value))}
-          />
-        </StyledDimension>
-        <StyledDimension>
-          <StyledLabel htmlFor="depth">depth (mm):</StyledLabel>
-          <input
-            name="depth"
-            type="number"
-            id="depth"
-            value={depth}
-            min="0"
-            onChange={(event) => setDepth(Number(event.target.value))}
-          />
-        </StyledDimension>
-        <StyledDimension>
-          <StyledLabel htmlFor="height">height (mm):</StyledLabel>
-          <input
-            name="height"
-            type="number"
-            id="height"
-            value={height}
-            min="0"
-            onChange={(event) => setHeight(Number(event.target.value))}
-          />
-        </StyledDimension>
-      </StyledDimensionsWrapper>
+     
+    
       <StyledLabel htmlFor="tags">tags:</StyledLabel>
       <TagInput name="tags" id="tags" onSaveTag={handleTagSave} tags={tags} />
 
